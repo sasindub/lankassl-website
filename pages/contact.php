@@ -28,7 +28,7 @@ $preselect = $_GET['product'] ?? '';
 					<div class="field"><label for="f-product">Product of interest</label>
 						<select id="f-product" name="product">
 							<option value="">General enquiry</option>
-							<?php foreach ($PRODUCTS as $s => $p): ?><option value="<?= e($p['name']) ?>" <?= $preselect === $s ? 'selected' : '' ?>><?= e($p['name']) ?></option><?php endforeach; ?>
+							<?php foreach ($PRODUCTS as $s => $p): ?><option value="<?= e($p['name']) ?>" data-slug="<?= e($s) ?>" <?= $preselect === $s ? 'selected' : '' ?>><?= e($p['name']) ?></option><?php endforeach; ?>
 						</select>
 					</div>
 				</div>

@@ -311,6 +311,12 @@
 	}
 
 	/* ---------- forms ---------- */
+	var productSelect = $('#f-product');
+	if (productSelect) {
+		var wanted = new URLSearchParams(location.search).get('product');
+		var opt = wanted && $('option[data-slug="' + wanted.replace(/[^a-z0-9-]/g, '') + '"]', productSelect);
+		if (opt) opt.selected = true;
+	}
 	$$('form[data-endpoint]').forEach(function (form) {
 		var status = $('.form-status', form);
 		var btn = $('button[type="submit"]', form);
@@ -325,6 +331,11 @@
 			if (file && file.files[0] && file.files[0].size > 3 * 1024 * 1024) {
 				status.textContent = 'Please attach a CV smaller than 3 MB.';
 				status.classList.add('err');
+				return;
+			}
+			if (window.LSSL.demo) {
+				status.textContent = 'This is a demo preview — form sending is enabled on the live website.';
+				status.classList.add('ok');
 				return;
 			}
 			var label = btn.innerHTML;

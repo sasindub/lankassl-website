@@ -7,3 +7,7 @@ class/mail-config.php
 # OS / editor
 .DS_Store
 **/debug.log
+
+# Static export output
+dist/
+.vercel/

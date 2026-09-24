@@ -3,7 +3,10 @@
 $host = $_SERVER['HTTP_HOST'] ?? '';
 $isLocal = preg_match('/^(localhost|127\.0\.0\.1)(:\d+)?$/', $host) === 1;
 
-if ($isLocal) {
+if (getenv('LSSL_ROOT') !== false) {
+	// Static export: root-relative URLs (e.g. LSSL_ROOT='' gives /home)
+	define('ROOT', rtrim(getenv('LSSL_ROOT'), '/'));
+} elseif ($isLocal) {
 	$base = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/')), '/');
 	define('ROOT', 'http://' . $host . $base);
 } else {

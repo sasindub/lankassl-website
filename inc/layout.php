@@ -279,7 +279,7 @@ function page_end(array $o = []): void
 	<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js"></script>
-	<script>window.LSSL = { root: <?= json_encode(ROOT) ?> };</script>
+	<script>window.LSSL = { root: <?= json_encode(ROOT) ?>, demo: <?= getenv('LSSL_DEMO') ? 'true' : 'false' ?> };</script>
 	<script src="<?= asset('js/site.js') ?>?v=<?= ASSET_VERSION ?>"></script>
 	<?php foreach ($o['scripts'] ?? [] as $s): ?>
 		<script src="<?= asset($s) ?>?v=<?= ASSET_VERSION ?>"></script>
