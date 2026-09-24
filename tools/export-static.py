@@ -41,8 +41,13 @@ server = subprocess.Popen([PHP, '-S', f'127.0.0.1:{PORT}', '-t', ROOT, ROUTER], 
                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 try:
     time.sleep(1.2)
-    shutil.rmtree(DIST, ignore_errors=True)
-    os.makedirs(DIST)
+    # Clear previous output but keep dist/.vercel (the Vercel project link)
+    os.makedirs(DIST, exist_ok=True)
+    for name in os.listdir(DIST):
+        if name == '.vercel':
+            continue
+        path = os.path.join(DIST, name)
+        shutil.rmtree(path) if os.path.isdir(path) else os.remove(path)
     assets = set()
 
     def fetch(route):
