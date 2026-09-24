@@ -1,0 +1,9 @@
+# Raw source assets (huge originals + pricing sheets) — optimized copies live in assets/v2
+WEB/
+
+# Secrets
+class/mail-config.php
+
+# OS / editor
+.DS_Store
+**/debug.log
