@@ -371,9 +371,9 @@ $BOARD = [
 $CEO = ['name' => 'Mr. Janaka Perera', 'role' => 'Chief Executive Officer', 'photo' => 'people/ceo.webp'];
 
 $MANAGEMENT = [
-	['Mr. Thusitha Nissanga', 'Senior Manager – Sales & Marketing', 'thusitha-nissanga'],
+	['Mr. W. P. Chinthaka Gayan', 'Head of Sales & Marketing', 'chinthaka-gayan'],
 	['Mr. H. Rashika Seram', 'Senior Manager – Quality Assurance & QMS', 'rashika-seram'],
-	['Mr. W. P. Chinthaka Gayan', 'Head of Sales & Marketing', 'm10'],
+	['Mr. Thusitha Nissanga', 'Senior Manager – Sales & Marketing', 'thusitha-nissanga'],
 	['Ms. P. Roshani Tissera', 'Chief Financial Officer', 'm12'],
 	['Mr. J. D. Jeyamanoharan', 'Senior Manager – Production', 'm3'],
 	['Mr. A. Suraj Karunathilaka', 'Senior Manager – QMS & Safety', 'm9'],
