@@ -53,7 +53,7 @@ $isPhoto = !empty($product['photo']);
 	<div class="container split" style="align-items:start">
 		<div class="prose">
 			<p class="eyebrow" data-reveal>Overview</p>
-			<h2 class="h-md" data-split>Why specify Lanka SSL <?= e($product['short']) ?>?</h2>
+			<h2 class="h-md" data-split>Why choose <?= e($product['short']) ?>?</h2>
 			<?php foreach ($product['overview'] as $para): ?>
 				<p data-reveal><?= e($para) ?></p>
 			<?php endforeach; ?>
@@ -84,7 +84,7 @@ $isPhoto = !empty($product['photo']);
 	<div class="container tables">
 		<?php if (!empty($product['stock'])): $st = $product['stock']; ?>
 			<div data-reveal>
-				<div class="table-title"><h3><?= e($st['title']) ?></h3><span>Other sizes available on request</span></div>
+				<div class="table-title"><h3><?= e($st['title']) ?></h3><span><?= e($st['note'] ?? 'Other sizes available on request') ?></span></div>
 				<div class="table-wrap">
 					<table class="data small">
 						<thead><tr><?php foreach ($st['head'] as $h): ?><th><?= e($h) ?></th><?php endforeach; ?></tr></thead>

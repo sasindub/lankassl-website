@@ -1,6 +1,6 @@
 <?php
-page_start(['title' => 'Products', 'description' => 'Hot-dipped GI wire, nail wire, barbed wire, PVC-coated wire, chain link fencing and Tata Steel wire products from Lanka Special Steels.']);
-page_hero('Product portfolio', 'Steel wire for <span class="gold">every</span> project.', 'From our flagship hot-dipped GI wire to new chain link fencing — manufactured in Sri Lanka to national and international standards.', 'products/gi-coils.webp', ['Products' => null]);
+page_start(['title' => 'Products', 'description' => 'Hot-dipped GI wire, nail wire, barbed wire, PVC-coated wire, chain link fencing, Tata Steel wire, LAXAPANA batteries and LED bulbs, MARQUIS water pumps and TOA spray paint from Lanka Special Steels.']);
+page_hero('Product portfolio', 'Products for <span class="gold">every</span> project.', 'From our flagship hot-dipped GI wire and chain link fencing to LAXAPANA consumer products and trusted brands we distribute island-wide.', 'products/gi-coils.webp', ['Products' => null]);
 
 ?>
 

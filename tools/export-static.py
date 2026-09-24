@@ -16,7 +16,9 @@ DIST = os.path.join(ROOT, 'dist')
 PHP = sys.argv[1] if len(sys.argv) > 1 else '/Applications/XAMPP/xamppfiles/bin/php'
 PORT = 8199
 
-PRODUCTS = re.findall(r"^\t'([a-z0-9-]+)' => \[", open(os.path.join(ROOT, 'inc/data.php')).read(), re.M)
+PRODUCTS = subprocess.run(
+    [PHP, '-r', "require $argv[1]; echo implode(PHP_EOL, array_keys($PRODUCTS));", os.path.join(ROOT, 'inc/data.php')],
+    check=True, capture_output=True, text=True).stdout.split()
 ROUTES = ['home', 'about-company', 'board-of-directors', 'management-team', 'business-excellence',
           'products', 'product-specification', 'product-brochures', 'awards', 'certifications',
           'press-release', 'gallery', 'careers', 'contact'] + ['products/' + p for p in PRODUCTS]
