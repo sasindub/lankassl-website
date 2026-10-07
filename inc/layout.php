@@ -248,10 +248,14 @@ function add_to_cart_button(string $slug, string $class = 'btn btn-ghost btn-sm'
 function page_hero(string $eyebrow, string $title, string $lead = '', string $image = 'site/hero-factory.webp', array $crumbs = []): void
 {
 	?>
-	<section class="page-hero">
-		<div class="page-hero-media" aria-hidden="true">
-			<img src="<?= img($image) ?>" alt="" data-parallax>
-		</div>
+	<section class="page-hero<?= $image === '' ? ' logo-hero' : '' ?>">
+		<?php if ($image === ''): ?>
+			<div class="hero-watermark" aria-hidden="true"><?= brand_logo() ?></div>
+		<?php else: ?>
+			<div class="page-hero-media" aria-hidden="true">
+				<img src="<?= img($image) ?>" alt="" data-parallax>
+			</div>
+		<?php endif; ?>
 		<div class="container page-hero-inner">
 			<nav class="crumbs" aria-label="Breadcrumb">
 				<a href="<?= url('home') ?>">Home</a>

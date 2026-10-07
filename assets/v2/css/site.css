@@ -876,3 +876,16 @@ body:not(.no-hero) .site-header:not(.is-scrolled) .brand-logo .logo-white { disp
 .preloader .brand-logo img { height: 92px; width: auto; }
 @media (max-width: 420px) { .brand .brand-logo + .brand-text { display: none; } }
 .cart-count[hidden] { display: none; }
+
+/* ---------- page hero with the Lanka SSL logo as a faded watermark ---------- */
+.page-hero.logo-hero { color: var(--text); background: radial-gradient(60% 80% at 85% 40%, var(--glow), transparent 70%), var(--bg-2); border-bottom: 1px solid var(--line-soft); }
+.page-hero.logo-hero::before { background: linear-gradient(90deg, var(--bg-2) 0%, transparent 55%); }
+.page-hero.logo-hero::after { background: none; }
+.logo-hero .page-title { color: var(--text); }
+.logo-hero .page-lead, .logo-hero .crumbs { color: var(--muted); }
+.logo-hero .crumbs a:hover { color: var(--gold-text); }
+.logo-hero .eyebrow { color: var(--gold-text); }
+.hero-watermark { position: absolute; z-index: -2; top: calc(50% + 42px); right: max(var(--gutter), calc((100vw - var(--container)) / 2)); transform: translateY(-50%); height: 66%; pointer-events: none; opacity: .09; }
+[data-theme="light"] .hero-watermark { opacity: .08; }
+.hero-watermark .brand-logo, .hero-watermark .brand-logo img { height: 100%; width: auto; }
+@media (max-width: 760px) { .hero-watermark { height: 52%; right: -6%; top: 58%; opacity: .07; } }

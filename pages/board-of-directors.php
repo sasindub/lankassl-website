@@ -1,6 +1,6 @@
 <?php
-page_start(['title' => 'Board of Directors']);
-page_hero('Governance', 'Board of <span class="gold">Directors</span>', 'Experienced leadership drawn from across the E.B. Creasy Group and The Colombo Fort Land & Building Group.', 'site/inauguration-2.webp', ['Company' => null, 'Board of Directors' => null]);
+page_start(['title' => 'Board of Directors', 'body' => 'no-hero']);
+page_hero('Governance', 'Board of <span class="gold">Directors</span>', 'Experienced leadership drawn from across the E.B. Creasy Group and The Colombo Fort Land & Building Group.', '', ['Company' => null, 'Board of Directors' => null]);
 
 function initials(string $name): string
 {
