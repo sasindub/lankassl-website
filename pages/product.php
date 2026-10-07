@@ -14,12 +14,31 @@ $isPhoto = !empty($product['photo']);
 			<span class="tag" data-reveal><?= e($product['badge']) ?></span>
 			<h1 data-split><?= e($product['name']) ?></h1>
 			<p class="lead" data-reveal><?= e($product['lead']) ?></p>
-			<div class="hero-actions" data-reveal>
-				<a class="btn btn-gold" href="<?= url('contact') ?>?product=<?= e($slug) ?>">Request a Quote <?= icon('arrow') ?></a>
-				<?php if (!empty($product['spec_tables'])): ?>
-					<a class="btn btn-ghost" href="#specifications">Specifications</a>
-				<?php endif; ?>
-			</div>
+			<?php $opt = $ORDER_OPTIONS[$slug] ?? null; if ($opt): ?>
+				<form class="order-panel" data-order-panel="<?= e($slug) ?>" data-reveal novalidate>
+					<div class="field">
+						<label for="op-variant"><?= e($opt['label']) ?></label>
+						<select id="op-variant" name="variant" required>
+							<?php foreach ($opt['variants'] as $v): ?><option><?= e($v) ?></option><?php endforeach; ?>
+						</select>
+					</div>
+					<div class="order-row">
+						<div class="field">
+							<label for="op-qty">Quantity <span class="muted">(<?= e($opt['unit']) ?>)</span></label>
+							<div class="qty"><button type="button" class="qty-btn" data-step="-1" aria-label="Decrease"><?= icon('minus') ?></button><input id="op-qty" name="qty" type="number" min="1" max="100000" value="1" inputmode="numeric"><button type="button" class="qty-btn" data-step="1" aria-label="Increase"><?= icon('plus') ?></button></div>
+						</div>
+						<button class="btn btn-gold" type="submit"><?= icon('cart') ?> Add to cart</button>
+					</div>
+					<div class="field">
+						<label for="op-note">Note <span class="muted">(optional)</span></label>
+						<input id="op-note" name="note" maxlength="200" placeholder="<?= e($opt['note_hint'] ?? 'Any specification details') ?>">
+					</div>
+					<p class="order-links">
+						<a href="<?= url('contact') ?>?product=<?= e($slug) ?>">Need a quote first?</a>
+						<?php if (!empty($product['spec_tables'])): ?> · <a href="#specifications">Specifications</a><?php endif; ?>
+					</p>
+				</form>
+			<?php endif; ?>
 		</div>
 		<div>
 			<div class="pd-visual">
@@ -122,7 +141,7 @@ $isPhoto = !empty($product['photo']);
 					<div class="p-card-media<?= !empty($p['photo']) ? ' photo' : '' ?>"><img src="<?= img($p['image']) ?>" alt="<?= e($p['name']) ?>" loading="lazy"></div>
 					<div class="p-card-body">
 						<h3><?= e($p['short']) ?></h3>
-						<span class="link-arrow">View <?= icon('arrow') ?></span>
+						<div class="p-card-actions"><span class="link-arrow">View <?= icon('arrow') ?></span><?= add_to_cart_button($s) ?></div>
 					</div>
 					<a class="p-card-link" href="<?= url('products/' . $s) ?>" aria-label="<?= e($p['name']) ?>"></a>
 				</article>

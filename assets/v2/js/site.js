@@ -96,6 +96,7 @@
 	if (!reduceMotion && typeof window.Lenis !== 'undefined') {
 		lenis = new window.Lenis({ duration: 1.15, easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, smoothWheel: true });
 		lenis.on('scroll', function (e) { onScroll(e.scroll); if (hasGsap) window.ScrollTrigger.update(); });
+		window.lsslLenis = lenis;
 		if (hasGsap) {
 			window.gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
 			window.gsap.ticker.lagSmoothing(0);
@@ -257,7 +258,7 @@
 			var tl = window.gsap.timeline({
 				onComplete: function () { pre.remove(); if (lenis) lenis.start(); }
 			});
-			tl.to('.preloader img', { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'expo.out' })
+			tl.to('.preloader .brand-logo', { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: 'expo.out' })
 				.to('.preloader p', { opacity: 1, duration: 0.5 }, '-=0.4')
 				.to('.preloader-bar span', { scaleX: 1, duration: 0.9, ease: 'power2.inOut' }, '-=0.5')
 				.to('.preloader-inner', { opacity: 0, y: -20, duration: 0.45, ease: 'power2.in' })

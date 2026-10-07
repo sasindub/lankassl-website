@@ -11,3 +11,9 @@ class/mail-config.php
 # Static export output
 dist/
 .vercel/
+
+# Database credentials
+inc/db-config.php
+
+# Hosting upload package (contains admin password)
+deploy/

@@ -5,7 +5,7 @@ $featured = $PRODUCTS['hot-dipped-gi-wire'];
 
 <div class="preloader" aria-hidden="true">
 	<div class="preloader-inner">
-		<img src="<?= img('brand/lssl-logo.png') ?>" alt="">
+		<?= brand_logo('on-dark') ?>
 		<div class="preloader-bar"><span></span></div>
 		<p>Trusted Name in Steels</p>
 	</div>
@@ -107,7 +107,7 @@ $featured = $PRODUCTS['hot-dipped-gi-wire'];
 					<div class="p-card-body">
 						<h3><?= e($p['short']) ?></h3>
 						<p><?= e($p['lead']) ?></p>
-						<span class="link-arrow">Learn more <?= icon('arrow') ?></span>
+						<div class="p-card-actions"><span class="link-arrow">Learn more <?= icon('arrow') ?></span><?= add_to_cart_button($slug) ?></div>
 					</div>
 					<a class="p-card-link" href="<?= url('products/' . $slug) ?>" aria-label="<?= e($p['name']) ?>"></a>
 				</article>

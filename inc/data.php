@@ -582,3 +582,57 @@ $VACANCIES = [
 	['IT Manager', 'Information Technology', 'Lead the planning, implementation and maintenance of our IT systems, ensuring optimal functionality and security while driving continuous improvement.'],
 	['Senior Production Manager', 'Operations', 'Lead production end-to-end — planning, scheduling, quality and resources — to optimise efficiency, minimise downtime and uphold strict quality standards.'],
 ];
+
+/* ------------------------------------------------------------------ */
+/* Online ordering — unit and selectable options per product          */
+/* ------------------------------------------------------------------ */
+
+$TOA_COLOURS = [
+	'1' => 'White', '2' => 'Black', '3' => 'Red', '4' => 'Sky Blue', '5' => 'Yellow', '6' => 'Dark Blue', '7' => 'Light Blue',
+	'8' => 'Orange', '9' => 'Light Green', '10' => 'Cream', '12' => 'Dark Green', '13' => 'Jade', '14' => 'Orchid',
+	'15' => 'Medium Yellow', '16' => 'Toyota Yellow', '17' => 'Silver', '20' => 'Gold', '21' => 'Flat Black', '22' => 'Maroon',
+	'24' => 'Dark Grey', '25' => 'Emerald Green', '26' => 'Blue Green', '28' => 'Down Pink', '29' => 'Silver Grey',
+	'30' => 'Clear Lacquer', '31' => 'Anti-Rust Primer', '32' => 'Metallic Silver', '33' => 'Brown', '34' => 'River Blue',
+	'35' => 'Makita Turquoise', '36' => 'Bosch Blue', '37' => 'Mitsubishi Yellow', '38' => 'Maktec Orange', '39' => 'Kubota',
+	'51' => 'Heat-Resistant Flat Black', '52' => 'Heat-Resistant Silver', '54' => 'Heat-Resistant Black', '55' => 'Ferrari Red',
+	'56' => 'Primer Surfacer Grey', '59' => 'Mist Grey', '60' => 'Ivory', '63' => 'Plastic Primer', '65' => 'Flat White',
+	'70' => 'Taxi Green', '71' => 'Taxi Yellow', '72' => 'Taxi Blue', '73' => 'Taxi Red', '74' => 'Taxi Bright Green',
+	'75' => 'Tractor Yellow', '88' => 'Aluminium Gold', '91' => 'Flat Clear', '100' => 'Chrome', '101' => 'Copper',
+	'102' => 'Brass', '103' => 'Pearl Gold', '123' => 'Metallic Gold', 'F2' => 'Fluorescent Red', 'F3' => 'Fluorescent Yellow',
+	'F4' => 'Fluorescent Orange', 'F5' => 'Fluorescent Green', 'F6' => 'Fluorescent Pink',
+];
+
+$chainLink = [];
+foreach ([['G12', '63 × 63 mm', ['0.9', '1.2', '1.5', '1.8']], ['G12', '50 × 50 mm', ['1.2', '1.5', '1.8']], ['G10', '63 × 63 mm', ['1.2', '1.5', '1.8']], ['G10', '50 × 50 mm', ['1.2', '1.5', '1.8']]] as [$g, $mesh, $heights]) {
+	foreach ($heights as $h) $chainLink[] = "$g · $mesh · {$h} m × 15 m";
+}
+
+$leds = [];
+foreach (['5', '7', '9', '12', '15.5'] as $w) foreach (['B22 pin', 'E27 screw'] as $cap) $leds[] = "{$w} W · $cap";
+
+$ORDER_OPTIONS = [
+	'hot-dipped-gi-wire'     => ['unit' => 'kg', 'label' => 'Diameter', 'variants' => ['1.60 mm (20 – 35 kg coils)', '2.00 mm (20 – 35 kg coils)', '2.50 mm (20 – 35 kg coils)', '3.00 mm (20 – 35 kg coils)', '4.00 mm (20 – 35 kg coils)', '3.50 mm (50 – 75 kg coils)', '5.00 mm (50 – 75 kg coils)', 'Other size (specify in note)']],
+	'nail-wire'              => ['unit' => 'kg', 'label' => 'Diameter', 'variants' => ['1.4 – 2.0 mm', '2.0 – 2.5 mm', '2.5 – 3.0 mm', '3.0 – 5.0 mm', 'Annealed (specify size in note)']],
+	'barbed-wire'            => ['unit' => 'pack', 'label' => 'Pack', 'variants' => ['2.00 mm · 10 kg pack', '2.00 / 2.50 mm · 25 kg pack (SLS 31)']],
+	'pvc-coated-gi-wire'     => ['unit' => 'coil', 'label' => 'Size', 'variants' => ['2.60 mm · Dark green · 25 kg coil', 'Other size (specify in note)']],
+	'pvc-coated-barbed-wire' => ['unit' => 'pack', 'label' => 'Pack', 'variants' => ['2.60 mm · 10 kg pack', '2.60 mm · Dark green · 20 kg pack']],
+	'pvc-chain-link-fence'   => ['unit' => 'roll', 'label' => 'Gauge · mesh · height', 'variants' => array_merge($chainLink, ['Custom size (specify in note)'])],
+	'gi-chain-link-fence'    => ['unit' => 'roll', 'label' => 'Coating', 'variants' => ['Commercial coating', 'Heavy galvanizing'], 'note_hint' => 'Height, mesh size and quantity details'],
+	'tata-wire-products'     => ['unit' => 'kg', 'label' => 'Product', 'variants' => $PRODUCTS['tata-wire-products']['range'], 'note_hint' => 'Size / specification required'],
+	'laxapana-batteries'     => ['unit' => 'piece', 'label' => 'Size', 'variants' => ['AA · Super Heavy Duty', 'D · Super Heavy Duty', '9V · Extra Heavy Duty']],
+	'laxapana-led-bulbs'     => ['unit' => 'piece', 'label' => 'Wattage · cap', 'variants' => $leds],
+	'marquis-water-pumps'    => ['unit' => 'unit', 'label' => 'Model series', 'variants' => ['Centrifugal · MCP', 'Centrifugal · 2MCP', 'Centrifugal · MGA / MHF', 'Jet · MJM', 'Jet · MJSW', 'Peripheral · MKP', 'Automatic booster · MQS', 'Submersible · SA', 'Submersible · 3SA', 'Submersible · MSAm', 'Submersible · SP', 'Submersible · SUP', 'Submersible · V', 'Borehole · 3SWM', 'Borehole · 4SWM', 'Pressure controller · EC-2'], 'note_hint' => 'Required power / head / flow, if known'],
+	'toa-spray'              => ['unit' => 'can', 'label' => 'Colour', 'variants' => array_map(fn($code, $name) => "No. $code · $name", array_keys($TOA_COLOURS), $TOA_COLOURS)],
+];
+unset($chainLink, $leds);
+
+$ORDER_STATUSES = [
+	'pending'    => 'Pending',
+	'confirmed'  => 'Confirmed',
+	'processing' => 'Processing',
+	'dispatched' => 'Dispatched',
+	'delivered'  => 'Delivered',
+	'cancelled'  => 'Cancelled',
+];
+
+$DISTRICTS = ['Ampara', 'Anuradhapura', 'Badulla', 'Batticaloa', 'Colombo', 'Galle', 'Gampaha', 'Hambantota', 'Jaffna', 'Kalutara', 'Kandy', 'Kegalle', 'Kilinochchi', 'Kurunegala', 'Mannar', 'Matale', 'Matara', 'Monaragala', 'Mullaitivu', 'Nuwara Eliya', 'Polonnaruwa', 'Puttalam', 'Ratnapura', 'Trincomalee', 'Vavuniya'];

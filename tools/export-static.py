@@ -21,7 +21,7 @@ PRODUCTS = subprocess.run(
     check=True, capture_output=True, text=True).stdout.split()
 ROUTES = ['home', 'about-company', 'board-of-directors', 'management-team', 'business-excellence',
           'products', 'product-specification', 'product-brochures', 'awards', 'certifications',
-          'press-release', 'gallery', 'careers', 'contact'] + ['products/' + p for p in PRODUCTS]
+          'press-release', 'gallery', 'careers', 'contact', 'checkout'] + ['products/' + p for p in PRODUCTS]
 REDIRECTS = {
     'intro': 'home', 'barded-wire': 'products/barbed-wire', 'pvc-coated-iron-wire': 'products/pvc-coated-gi-wire',
     'hot-dipped-gi-wire': 'products/hot-dipped-gi-wire', 'nail-wire': 'products/nail-wire',

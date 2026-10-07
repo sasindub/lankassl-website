@@ -29,8 +29,23 @@ function icon(string $name, string $class = 'ico'): string
 		'facebook' => '<path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/>',
 		'linkedin' => '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>',
 		'play'     => '<path d="M8 5v14l11-7z"/>',
+		'cart'     => '<path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/>',
+		'trash'    => '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',
+		'plus'     => '<path d="M12 5v14M5 12h14"/>',
+		'minus'    => '<path d="M5 12h14"/>',
+		'bag'      => '<path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',
 	];
 	return '<svg class="' . $class . '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . ($paths[$name] ?? '') . '</svg>';
+}
+
+/** The Lanka SSL wordmark: navy on light backgrounds, white on dark ones (switched in CSS). */
+function brand_logo(string $class = '', string $alt = ''): string
+{
+	$cls = trim('brand-logo ' . $class);
+	return '<span class="' . e($cls) . '">'
+		. '<img class="logo-navy" src="' . img('brand/lanka-ssl-navy.png') . '" alt="' . e($alt) . '" width="600" height="494">'
+		. '<img class="logo-white" src="' . img('brand/lanka-ssl-white.png') . '" alt="" aria-hidden="true" width="600" height="494">'
+		. '</span>';
 }
 
 function page_start(array $o = []): void
@@ -54,6 +69,7 @@ function page_start(array $o = []): void
 	<meta property="og:description" content="<?= e($desc) ?>">
 	<meta property="og:image" content="<?= img('site/hero-factory.webp') ?>">
 	<link rel="icon" type="image/png" href="<?= img('brand/favicon.png') ?>">
+	<link rel="apple-touch-icon" href="<?= img('brand/apple-touch-icon.png') ?>">
 	<script>
 		(function () {
 			document.documentElement.classList.add('js');
@@ -76,7 +92,7 @@ function page_start(array $o = []): void
 	<header class="site-header" id="top">
 		<div class="container header-inner">
 			<a class="brand" href="<?= url('home') ?>" aria-label="Lanka Special Steels — Home">
-				<img src="<?= img('brand/lssl-logo.png') ?>" alt="" width="40" height="43">
+				<?= brand_logo() ?>
 				<span class="brand-text">
 					<strong>Lanka Special Steels</strong>
 					<small><?= e($COMPANY['parent']) ?></small>
@@ -127,6 +143,9 @@ function page_start(array $o = []): void
 			</nav>
 
 			<div class="header-actions">
+				<button class="cart-toggle" type="button" aria-label="Open cart" aria-controls="cart-drawer" title="Your cart">
+					<?= icon('cart') ?><span class="cart-count" data-cart-count hidden>0</span>
+				</button>
 				<button class="theme-toggle" type="button" aria-label="Switch colour theme" title="Switch light / dark">
 					<?= icon('sun', 'ico sun') ?><?= icon('moon', 'ico moon') ?>
 				</button>
@@ -161,12 +180,69 @@ function page_start(array $o = []): void
 				<a href="<?= url('gallery') ?>">Gallery</a>
 				<a href="<?= url('careers') ?>">Careers</a>
 				<a href="<?= url('contact') ?>">Contact</a>
+				<a href="<?= url('checkout') ?>">Cart &amp; Checkout</a>
 			</nav>
 		</div>
 	</div>
 
+	<aside class="cart-drawer" id="cart-drawer" aria-hidden="true" aria-label="Your cart">
+		<div class="cart-backdrop" data-cart-close></div>
+		<div class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+			<div class="cart-head">
+				<h2 id="cart-title">Your cart</h2>
+				<button class="icon-btn" type="button" data-cart-close aria-label="Close cart"><?= icon('close') ?></button>
+			</div>
+			<div class="cart-body" data-cart-items data-lenis-prevent></div>
+			<div class="cart-foot">
+				<p class="cart-note">Prices and delivery are confirmed by our sales team after you place your order.</p>
+				<a class="btn btn-gold" href="<?= url('checkout') ?>" data-cart-checkout>Place order <?= icon('arrow') ?></a>
+			</div>
+		</div>
+	</aside>
+
+	<dialog class="add-dialog" id="add-dialog" aria-labelledby="add-title" data-lenis-prevent>
+		<form method="dialog" class="add-form" novalidate>
+			<button class="icon-btn add-close" type="submit" value="cancel" aria-label="Close"><?= icon('close') ?></button>
+			<div class="add-product">
+				<span class="add-thumb"><img src="" alt="" data-add-image></span>
+				<div><p class="eyebrow" data-add-family></p><h2 id="add-title" data-add-name></h2></div>
+			</div>
+			<div class="field"><label for="add-variant" data-add-label>Option</label><select id="add-variant" data-add-variant required></select></div>
+			<div class="field"><label for="add-note">Note <span class="muted">(optional)</span></label><input id="add-note" data-add-note maxlength="200" placeholder="Any specification details"></div>
+			<div class="field"><label for="add-qty">Quantity <span class="muted" data-add-unit></span></label>
+				<div class="qty"><button type="button" class="qty-btn" data-step="-1" aria-label="Decrease"><?= icon('minus') ?></button><input id="add-qty" data-add-qty type="number" min="1" max="100000" value="1" inputmode="numeric"><button type="button" class="qty-btn" data-step="1" aria-label="Increase"><?= icon('plus') ?></button></div>
+			</div>
+			<button class="btn btn-gold" type="submit" value="add" data-add-submit><?= icon('cart') ?> Add to cart</button>
+		</form>
+	</dialog>
+
+	<div class="toast" role="status" aria-live="polite" data-toast></div>
+
 	<main id="main">
 <?php
+}
+
+/** Product data for the cart script (names, images, order options). */
+function catalog_json(): string
+{
+	global $PRODUCTS, $ORDER_OPTIONS;
+	$out = [];
+	foreach ($PRODUCTS as $slug => $p) {
+		if (!isset($ORDER_OPTIONS[$slug])) continue;
+		$o = $ORDER_OPTIONS[$slug];
+		$out[$slug] = [
+			'name' => $p['name'], 'short' => $p['short'], 'family' => $p['family'],
+			'image' => img($p['image']), 'photo' => !empty($p['photo']), 'url' => url('products/' . $slug),
+			'unit' => $o['unit'], 'label' => $o['label'], 'variants' => $o['variants'], 'noteHint' => $o['note_hint'] ?? '',
+		];
+	}
+	return json_encode($out, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG);
+}
+
+/** "Add to cart" button for product cards. */
+function add_to_cart_button(string $slug, string $class = 'btn btn-ghost btn-sm'): string
+{
+	return '<button type="button" class="' . $class . ' add-btn" data-add-to-cart="' . e($slug) . '">' . icon('cart') . ' Add to cart</button>';
 }
 
 function page_hero(string $eyebrow, string $title, string $lead = '', string $image = 'site/hero-factory.webp', array $crumbs = []): void
@@ -225,7 +301,7 @@ function page_end(array $o = []): void
 			<div class="footer-top">
 				<div class="footer-brand">
 					<a class="brand" href="<?= url('home') ?>">
-						<img src="<?= img('brand/lssl-logo.png') ?>" alt="" width="52" height="56">
+						<?= brand_logo('on-dark') ?>
 						<span class="brand-text"><strong>Lanka Special Steels Limited</strong><small><?= e($COMPANY['parent']) ?></small></span>
 					</a>
 					<p>Sri Lanka’s largest and most established manufacturer of hot-dipped galvanized iron wire. Proudly Sri Lankan, trusted island-wide under the LAXAPANA brand.</p>
@@ -279,8 +355,9 @@ function page_end(array $o = []): void
 	<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js"></script>
-	<script>window.LSSL = { root: <?= json_encode(ROOT) ?>, demo: <?= getenv('LSSL_DEMO') ? 'true' : 'false' ?> };</script>
+	<script>window.LSSL = { root: <?= json_encode(ROOT) ?>, demo: <?= getenv('LSSL_DEMO') ? 'true' : 'false' ?>, catalog: <?= catalog_json() ?> };</script>
 	<script src="<?= asset('js/site.js') ?>?v=<?= ASSET_VERSION ?>"></script>
+	<script src="<?= asset('js/cart.js') ?>?v=<?= ASSET_VERSION ?>"></script>
 	<?php foreach ($o['scripts'] ?? [] as $s): ?>
 		<script src="<?= asset($s) ?>?v=<?= ASSET_VERSION ?>"></script>
 	<?php endforeach; ?>

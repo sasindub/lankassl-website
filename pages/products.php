@@ -15,7 +15,7 @@ page_hero('Product portfolio', 'Products for <span class="gold">every</span> pro
 						<span class="eyebrow" style="font-size:11px"><?= e($p['family']) ?></span>
 						<h3><?= e($p['name']) ?></h3>
 						<p><?= e($p['lead']) ?></p>
-						<span class="link-arrow">View details <?= icon('arrow') ?></span>
+						<div class="p-card-actions"><span class="link-arrow">View details <?= icon('arrow') ?></span><?= add_to_cart_button($slug) ?></div>
 					</div>
 					<a class="p-card-link" href="<?= url('products/' . $slug) ?>" aria-label="<?= e($p['name']) ?>"></a>
 				</article>
