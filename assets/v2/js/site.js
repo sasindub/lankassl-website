@@ -238,7 +238,7 @@
 		// product visual scrub
 		var pdImg = $('.pd-visual img.main');
 		if (pdImg) {
-			gsap.from(pdImg, { y: 40, opacity: 0, scale: 0.94, duration: 1.4, ease: 'expo.out', delay: 0.2 });
+			gsap.fromTo(pdImg, { y: 40, opacity: 0, scale: 0.94 }, { y: 0, opacity: 1, scale: 1, duration: 1.4, ease: 'expo.out', delay: 0.2 });
 		}
 
 		window.addEventListener('load', function () { window.ScrollTrigger.refresh(); });

@@ -440,7 +440,7 @@ if ($base === '.' || $base === '/') {
         </div>
         <div class="topbar-right">
             <div class="topbar-contact">
-                <a href="tel:+94117715300"><i class="fa-solid fa-phone"></i><span>+94 11 771 5300-3</span></a>
+                <a href="tel:+94117715300"><i class="fa-solid fa-phone"></i><span>+94 11 771 5300</span></a>
                 <a href="mailto:sales@lankassl.com"><i class="fa-solid fa-envelope"></i><span>sales@lankassl.com</span></a>
                 <a href="https://wa.me/94763866834" target="_blank" rel="noopener" class="wa"><i class="fa-brands fa-whatsapp"></i><span>076 386 6834</span></a>
             </div>
@@ -508,15 +508,14 @@ if ($base === '.' || $base === '/') {
             <div class="ccard">
                 <div class="ico"><i class="fa-solid fa-location-dot"></i></div>
                 <h4>Address</h4>
-                <p>53A, Ward Place,<br>Colombo 07, Sri Lanka</p>
+                <p><strong>Registered Office:</strong> No. 98, Sri Sangaraja Mawatha, Colombo 10<br><strong>Corporate Office &amp; Factory:</strong> No. 5, 6, 7 LINDEL, Pattiwila Road, Sapugaskanda, Makola</p>
             </div>
 
-            <!-- Phone & Fax -->
+            <!-- Phone -->
             <div class="ccard">
                 <div class="ico"><i class="fa-solid fa-phone"></i></div>
-                <h4>Phone &amp; Fax</h4>
-                <a href="tel:+94117715300">Phone : +94 11 771 5300-3</a>
-                <p style="margin-top:4px;color:#8f8f8f;">Fax : +94 11 269 6148</p>
+                <h4>Phone</h4>
+                <a href="tel:+94117715300">+94 11 771 5300</a>
             </div>
 
             <!-- Email & Website -->
@@ -536,7 +535,11 @@ if ($base === '.' || $base === '/') {
                 <img class="flogo" src="<?= $base ?>/assets/img/testimg/logo.jpg" alt="LAXAPANA Logo">
                 <p>LANKA SPECIAL STEELS LIMITED - the undisputed leader in the steel market in Sri Lanka, manufacturers of the trusted <strong>LAXAPANA</strong> brand.</p>
                 <div class="socials">
-                    <a href="https://www.facebook.com/LankaSpecialSteelsLimited" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/LaxapanaSteel" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/laxapanasteel/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@laxapanasteel" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://x.com/LankaSSLltd" target="_blank" rel="noopener" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.youtube.com/@laxapanasteel" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
                     <a href="https://www.linkedin.com/company/6755348/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div>
             </div>
@@ -544,9 +547,9 @@ if ($base === '.' || $base === '/') {
             <div>
                 <h5>Contact</h5>
                 <ul>
-                    <li><i class="fa-solid fa-location-dot"></i> 53A, Ward Place, Colombo 07, Sri Lanka</li>
-                    <li><i class="fa-solid fa-phone"></i> +94 11 771 5300-3</li>
-                    <li><i class="fa-solid fa-fax"></i> +94 11 269 6148</li>
+                    <li><i class="fa-solid fa-location-dot"></i> No. 98, Sri Sangaraja Mawatha, Colombo 10, Sri Lanka</li>
+                    <li><i class="fa-solid fa-industry"></i> No. 5, 6, 7 LINDEL, Pattiwila Road, Sapugaskanda, Makola, Sri Lanka</li>
+                    <li><i class="fa-solid fa-phone"></i> +94 11 771 5300</li>
                 </ul>
             </div>
 

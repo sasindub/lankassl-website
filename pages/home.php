@@ -26,10 +26,10 @@ $featured = $PRODUCTS['hot-dipped-gi-wire'];
 		</div>
 
 		<div class="hero-stats" data-stagger>
-			<div class="hero-stat"><strong>1998</strong><span>Pioneered local steel wire manufacturing</span></div>
-			<div class="hero-stat"><strong><span data-count="15000">15,000</span> MT</strong><span>Annual drawing &amp; galvanizing capacity</span></div>
-			<div class="hero-stat"><strong><span data-count="400">400</span> g/m²</strong><span>Maximum zinc coating</span></div>
-			<div class="hero-stat"><strong>India · Canada</strong><span>Direct export markets</span></div>
+			<div class="hero-stat"><strong>3 Decades</strong><span>of steel wire excellence</span></div>
+			<div class="hero-stat"><strong><span data-count="30000">30,000</span> MT</strong><span>annual capacity, ready to deliver</span></div>
+			<div class="hero-stat"><strong><span data-count="55" data-suffix="%">55%</span></strong><span>of the local market, earned by trust</span></div>
+			<div class="hero-stat"><strong>Worldwide</strong><span>North America · India · Europe · Japan</span></div>
 		</div>
 	</div>
 	<span class="scroll-cue">Scroll</span>
@@ -50,7 +50,7 @@ $featured = $PRODUCTS['hot-dipped-gi-wire'];
 <section class="section">
 	<div class="container split">
 		<div class="media-frame" data-reveal>
-			<img src="<?= img('site/factory-side.webp') ?>" alt="Lanka Special Steels manufacturing facility in Sapugaskanda" loading="lazy" data-parallax>
+			<img src="<?= img('site/drone.webp') ?>" alt="Aerial view of the Lanka Special Steels factory in Sapugaskanda" loading="lazy" data-parallax>
 			<div class="media-badge">
 				<strong>BOI</strong>
 				<span>Registered manufacturer and a subsidiary of <b>E.B. Creasy &amp; Co. PLC</b></span>
@@ -112,14 +112,6 @@ $featured = $PRODUCTS['hot-dipped-gi-wire'];
 					<a class="p-card-link" href="<?= url('products/' . $slug) ?>" aria-label="<?= e($p['name']) ?>"></a>
 				</article>
 			<?php endforeach; ?>
-			<article class="p-card more">
-				<div class="p-card-body">
-					<h3>Explore the full portfolio</h3>
-					<p>Specifications, brochures and end-use applications.</p>
-					<span class="link-arrow">All products <?= icon('arrow') ?></span>
-				</div>
-				<a class="p-card-link" href="<?= url('products') ?>" aria-label="All products"></a>
-			</article>
 		</div>
 	</div>
 </section>
@@ -140,7 +132,7 @@ $featured = $PRODUCTS['hot-dipped-gi-wire'];
 					<p><?= e($s[1]) ?></p>
 				</div>
 			<?php endforeach; ?>
-			<div class="strength" style="background:var(--grad-gold);color:var(--on-gold)">
+			<div class="strength strength-cta" style="background:var(--grad-gold);color:var(--on-gold)">
 				<span class="num" style="color:inherit;opacity:.7">→</span>
 				<h3>Need a custom specification?</h3>
 				<p style="color:inherit;opacity:.8">Tensile strength, coil weight, mesh size — tell us what your project needs.</p>
@@ -174,11 +166,11 @@ $featured = $PRODUCTS['hot-dipped-gi-wire'];
 		<div>
 			<p class="eyebrow" data-reveal>Export presence</p>
 			<h2 class="h-lg" data-split style="margin:18px 0">Meeting the world’s most demanding standards.</h2>
-			<p class="lead" data-reveal>We export GI wire and barbed wire directly to India and Canada — markets known for stringent import quality — and are among the few foreign manufacturers authorised to export to India under BIS IS 280.</p>
+			<p class="lead" data-reveal>From Sapugaskanda to North America, India, Europe and Japan — Lanka SSL wire meets markets known for stringent quality, and we are among the few foreign manufacturers authorised to export to India under BIS IS 280.</p>
 			<div class="market-list" data-stagger>
+				<div class="market"><?= icon('globe') ?><div><strong>North America</strong><p>Canada and the USA — premium GI wire for poultry cage and fencing, and value-added wire products.</p></div></div>
 				<div class="market"><?= icon('globe') ?><div><strong>India</strong><p>South India, Mumbai, Hyderabad &amp; Visakhapatnam — poultry and fencing applications.</p></div></div>
-				<div class="market"><?= icon('globe') ?><div><strong>Canada</strong><p>Premium GI wire for poultry cage and fencing segments.</p></div></div>
-				<div class="market"><?= icon('layers') ?><div><strong>USA · Europe · Japan</strong><p>Indirect exports through value-added products under the TIEP scheme.</p></div></div>
+				<div class="market"><?= icon('layers') ?><div><strong>Europe · Japan</strong><p>Including France — our GI wire reaches these markets in value-added products under the TIEP scheme.</p></div></div>
 			</div>
 		</div>
 		<div class="routes" data-reveal aria-hidden="true">
@@ -188,13 +180,19 @@ $featured = $PRODUCTS['hot-dipped-gi-wire'];
 					<pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" class="grid-dots"/></pattern>
 				</defs>
 				<rect width="500" height="410" fill="url(#dots)" opacity=".7"/>
-				<path class="route" d="M330 300 C 300 180, 160 100, 90 90"/>
-				<path class="route" d="M330 300 C 320 250, 305 225, 300 205"/>
-				<path class="route" d="M330 300 C 380 200, 420 150, 440 110"/>
+				<path class="route" d="M330 300 C 290 170, 150 90, 80 82"/>
+				<path class="route" d="M330 300 C 280 210, 160 160, 100 150"/>
+				<path class="route" d="M330 300 C 300 200, 260 120, 248 98"/>
+				<path class="route" d="M330 300 C 290 210, 240 140, 222 128"/>
+				<path class="route" d="M330 300 C 322 255, 312 228, 312 212"/>
+				<path class="route" d="M330 300 C 380 220, 425 165, 442 132"/>
 				<g><circle class="node-ring" cx="330" cy="300" r="10"/><circle class="node" cx="330" cy="300" r="6"/><text x="346" y="305">Sri Lanka</text><text class="sub" x="346" y="321">Sapugaskanda plant</text></g>
-				<g><circle class="node-ring" cx="300" cy="205" r="8"/><circle class="node" cx="300" cy="205" r="5"/><text x="222" y="200">India</text><text class="sub" x="190" y="216">BIS · IS 280</text></g>
-				<g><circle class="node-ring" cx="90" cy="90" r="8"/><circle class="node" cx="90" cy="90" r="5"/><text x="104" y="86">Canada</text><text class="sub" x="104" y="102">Poultry &amp; fencing</text></g>
-				<g><circle class="node" cx="440" cy="110" r="4"/><text x="380" y="92">Japan</text></g>
+				<g><circle class="node-ring" cx="80" cy="82" r="8"/><circle class="node" cx="80" cy="82" r="5"/><text x="30" y="66">Canada</text></g>
+				<g><circle class="node-ring" cx="100" cy="150" r="8"/><circle class="node" cx="100" cy="150" r="5"/><text x="40" y="178">North America</text><text class="sub" x="40" y="193">USA</text></g>
+				<g><circle class="node-ring" cx="248" cy="98" r="8"/><circle class="node" cx="248" cy="98" r="5"/><text x="232" y="80">Europe</text></g>
+				<g><circle class="node" cx="222" cy="128" r="4"/><text x="166" y="132">France</text></g>
+				<g><circle class="node-ring" cx="312" cy="212" r="8"/><circle class="node" cx="312" cy="212" r="5"/><text x="246" y="208">India</text><text class="sub" x="232" y="224">BIS · IS 280</text></g>
+				<g><circle class="node-ring" cx="442" cy="132" r="8"/><circle class="node" cx="442" cy="132" r="5"/><text x="420" y="114">Japan</text></g>
 			</svg>
 		</div>
 	</div>
@@ -210,10 +208,9 @@ $featured = $PRODUCTS['hot-dipped-gi-wire'];
 			<p class="eyebrow" data-reveal>Recognition</p>
 			<h2 class="h-lg" data-split style="margin:18px 0">An award-winning record of excellence.</h2>
 			<p class="lead" data-reveal>National Gold at the CNCI Achiever Awards 2020, consecutive Gold Awards at the National Convention on Quality &amp; Productivity since 2014, and top honours at the National Business Excellence Awards.</p>
-			<div class="stats-row three" data-stagger>
+			<div class="stats-row two" data-stagger>
 				<div class="stat"><strong data-count="12" data-suffix="+">12+</strong><span>Gold awards since 2019</span></div>
 				<div class="stat"><strong>2020</strong><span>CNCI National Gold</span></div>
-				<div class="stat"><strong>2014</strong><span>Gold every year since</span></div>
 			</div>
 			<a class="link-arrow" href="<?= url('awards') ?>" data-reveal>See all awards <?= icon('arrow') ?></a>
 		</div>
@@ -227,14 +224,8 @@ $featured = $PRODUCTS['hot-dipped-gi-wire'];
 			<p class="eyebrow" data-reveal>Certified quality</p>
 			<h2 class="h-md" data-split>National &amp; international certifications</h2>
 		</div>
-		<div class="marks" data-stagger>
-			<?php foreach ($CERTIFICATES as $c): ?>
-				<a class="mark" href="<?= url('certifications') ?>">
-					<img src="<?= img($c[4]) ?>" alt="" loading="lazy">
-					<strong><?= e($c[0]) ?></strong>
-					<span><?= e($c[1]) ?></span>
-				</a>
-			<?php endforeach; ?>
+		<div class="marks marks-6" data-stagger>
+			<?php foreach ($CERTIFICATES as $c): ?><?= cert_mark($c) ?><?php endforeach; ?>
 		</div>
 	</div>
 </section>

@@ -28,6 +28,10 @@ function icon(string $name, string $class = 'ico'): string
 		'upload'   => '<path d="M12 20V9M7 14l5-5 5 5M5 4h14"/>',
 		'facebook' => '<path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/>',
 		'linkedin' => '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>',
+		'instagram' => '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5v.01"/>',
+		'tiktok'   => '<path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 2.8 2.4 4.6 5 5"/>',
+		'x'        => '<path d="M4 4l16 16M20 4 4 20"/>',
+		'youtube'  => '<rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="m10 9.5 5 2.5-5 2.5z"/>',
 		'play'     => '<path d="M8 5v14l11-7z"/>',
 		'cart'     => '<path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/>',
 		'trash'    => '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',
@@ -36,6 +40,15 @@ function icon(string $name, string $class = 'ico'): string
 		'bag'      => '<path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',
 	];
 	return '<svg class="' . $class . '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' . ($paths[$name] ?? '') . '</svg>';
+}
+
+/** Certification tile: logo when available, otherwise a text badge (e.g. SLS 1148). */
+function cert_mark(array $c): string
+{
+	$logo = $c[4]
+		? '<img src="' . img($c[4]) . '" alt="" loading="lazy">'
+		: '<span class="mark-text">' . e(preg_replace('/\s.*$/', '', $c[0])) . '</span>';
+	return '<a class="mark" href="' . url('certifications') . '">' . $logo . '<strong>' . e($c[0]) . '</strong><span>' . e($c[1]) . '</span></a>';
 }
 
 /** The Lanka SSL wordmark: navy on light backgrounds, white on dark ones (switched in CSS). */
@@ -234,6 +247,7 @@ function catalog_json(): string
 			'name' => $p['name'], 'short' => $p['short'], 'family' => $p['family'],
 			'image' => img($p['image']), 'photo' => !empty($p['photo']), 'url' => url('products/' . $slug),
 			'unit' => $o['unit'], 'label' => $o['label'], 'variants' => $o['variants'], 'noteHint' => $o['note_hint'] ?? '',
+			'images' => (object) array_map('img', $o['images'] ?? []),
 		];
 	}
 	return json_encode($out, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG);
@@ -310,7 +324,7 @@ function page_end(array $o = []): void
 					</a>
 					<p>Sri Lanka’s largest and most established manufacturer of hot-dipped galvanized iron wire. Proudly Sri Lankan, trusted island-wide under the LAXAPANA brand.</p>
 					<div class="footer-marks">
-						<?php foreach ($CERTIFICATES as $c): ?>
+						<?php foreach (array_filter($CERTIFICATES, fn($c) => $c[4]) as $c): ?>
 							<img src="<?= img($c[4]) ?>" alt="<?= e($c[0]) ?>" title="<?= e($c[0]) ?>" loading="lazy">
 						<?php endforeach; ?>
 					</div>
@@ -341,8 +355,9 @@ function page_end(array $o = []): void
 					<p><?= icon('phone') ?><a href="tel:<?= e(str_replace(' ', '', $COMPANY['phone'])) ?>"><?= e($COMPANY['phone_all']) ?></a></p>
 					<p><?= icon('mail') ?><a href="mailto:<?= e($COMPANY['email']) ?>"><?= e($COMPANY['email']) ?></a></p>
 					<div class="socials">
-						<a href="<?= e($COMPANY['facebook']) ?>" target="_blank" rel="noopener" aria-label="Facebook"><?= icon('facebook') ?></a>
-						<a href="<?= e($COMPANY['linkedin']) ?>" target="_blank" rel="noopener" aria-label="LinkedIn"><?= icon('linkedin') ?></a>
+						<?php foreach (['facebook' => 'Facebook', 'instagram' => 'Instagram', 'tiktok' => 'TikTok', 'x' => 'X', 'youtube' => 'YouTube', 'linkedin' => 'LinkedIn'] as $key => $label): ?>
+							<a href="<?= e($COMPANY[$key]) ?>" target="_blank" rel="noopener" aria-label="<?= e($label) ?>"><?= icon($key) ?></a>
+						<?php endforeach; ?>
 					</div>
 				</div>
 			</div>

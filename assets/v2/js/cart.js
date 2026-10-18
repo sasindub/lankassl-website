@@ -39,6 +39,11 @@
 
 	var cart = load();
 
+	function variantImage(slug, variant) {
+		var p = catalog[slug];
+		return (p && p.images && p.images[variant]) || (p && p.image);
+	}
+
 	/* ---------- helpers ---------- */
 	function el(tag, cls, text) {
 		var n = document.createElement(tag);
@@ -81,9 +86,9 @@
 	function lineItem(it, index, compact) {
 		var p = catalog[it.slug];
 		var row = el('div', 'line');
-		var thumb = el('a', 'line-thumb' + (p.photo ? ' photo' : ''));
+		var thumb = el('a', 'line-thumb' + (p.photo && !(p.images && p.images[it.variant]) ? ' photo' : ''));
 		thumb.href = p.url;
-		var img = el('img'); img.src = p.image; img.alt = ''; img.loading = 'lazy';
+		var img = el('img'); img.src = variantImage(it.slug, it.variant); img.alt = ''; img.loading = 'lazy';
 		thumb.appendChild(img);
 		row.appendChild(thumb);
 
@@ -191,6 +196,12 @@
 		var sel = $('[data-add-variant]', dialog);
 		sel.innerHTML = '';
 		p.variants.forEach(function (v) { sel.appendChild(el('option', '', v)); });
+		sel.onchange = function () {
+			var src = variantImage(slug, sel.value);
+			$('[data-add-image]', dialog).src = src;
+			$('.add-thumb', dialog).classList.toggle('photo', !!p.photo && src === p.image);
+		};
+		sel.onchange();
 		var note = $('[data-add-note]', dialog);
 		note.value = ''; note.placeholder = p.noteHint || 'Any specification details';
 		$('[data-add-qty]', dialog).value = 1;
@@ -220,6 +231,27 @@
 
 	/* ---------- product page order panel ---------- */
 	$$('[data-order-panel]').forEach(function (form) {
+		var slugForImg = form.getAttribute('data-order-panel');
+		var main = $('.pd-visual img.main');
+		var link = main && main.closest('a');
+		var sel = form.elements.variant;
+		var hasImages = catalog[slugForImg] && catalog[slugForImg].images && Object.keys(catalog[slugForImg].images).length;
+		if (main && sel && hasImages) {
+			// preload so switching feels instant
+			Object.keys(catalog[slugForImg].images).slice(0, 80).forEach(function (k) { var i = new Image(); i.src = catalog[slugForImg].images[k]; });
+			sel.addEventListener('change', function () {
+				var src = variantImage(slugForImg, sel.value);
+				if (!src || main.getAttribute('src') === src) return;
+				var wrap = link || main;
+				wrap.classList.add('is-swapping');
+				setTimeout(function () {
+					main.src = src;
+					if (link) link.href = src;
+					main.classList.remove('photo');
+					wrap.classList.remove('is-swapping');
+				}, 200);
+			});
+		}
 		form.addEventListener('submit', function (e) {
 			e.preventDefault();
 			var slug = form.getAttribute('data-order-panel');

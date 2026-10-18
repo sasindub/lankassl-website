@@ -1,6 +1,6 @@
 <?php
 
-const ASSET_VERSION = '2026.10.07';
+const ASSET_VERSION = '2026.10.18';
 
 function url(string $path = ''): string
 {

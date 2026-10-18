@@ -41,7 +41,7 @@ page_hero('Careers', 'Build the future <span class="gold">with us</span>.', 'Lan
 			<h2 class="h-lg" data-split>Send us your CV.</h2>
 			<p class="lead" data-reveal>Tell us a little about yourself and attach your CV. Our HR team will be in touch if your profile matches an opening.</p>
 			<div class="media-frame wide" data-reveal style="margin-top:10px">
-				<img src="<?= img('gallery/g12.webp') ?>" alt="The Lanka SSL team" loading="lazy" data-parallax>
+				<img src="<?= img('site/drone.webp') ?>" alt="The Lanka SSL factory in Sapugaskanda" loading="lazy" data-parallax>
 			</div>
 		</div>
 		<div class="form-card" data-reveal>

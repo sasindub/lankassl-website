@@ -43,11 +43,11 @@ $isPhoto = !empty($product['photo']);
 		<div>
 			<div class="pd-visual">
 				<?php if (!$isPhoto): ?><span class="ring"></span><span class="ring r2"></span><?php endif; ?>
-				<a href="<?= img($product['image']) ?>" class="glightbox" data-gallery="product" style="position:relative;z-index:1">
+				<a href="<?= img($product['image']) ?>" class="glightbox main-link" data-gallery="product" style="position:relative;z-index:1">
 					<img class="main<?= $isPhoto ? ' photo' : '' ?>" src="<?= img($product['image']) ?>" alt="<?= e($product['name']) ?>" fetchpriority="high">
 				</a>
 				<?php if (!empty($product['mascot'])): ?>
-					<img class="mascot" src="<?= img('brand/mascot.webp') ?>" alt="" data-float>
+					<img class="mascot" src="<?= img(is_string($product['mascot']) ? $product['mascot'] : 'brand/mascot.webp') ?>" alt="" data-float>
 				<?php endif; ?>
 			</div>
 			<?php if (!empty($product['gallery'])): ?>

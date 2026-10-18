@@ -9,34 +9,36 @@ $COMPANY = [
 	'tagline'   => 'Trusted Name in Steels',
 	'parent'    => 'A subsidiary of E.B. Creasy & Co. PLC',
 	'phone'     => '+94 11 771 5300',
-	'phone_all' => '+94 11 771 5300-3',
+	'phone_all' => '+94 11 771 5300',
 	'email'     => 'sales@lankassl.com',
-	'facebook'  => 'https://www.facebook.com/LankaSpecialSteelsLimited',
+	'facebook'  => 'https://www.facebook.com/LaxapanaSteel',
+	'instagram' => 'https://www.instagram.com/laxapanasteel/',
+	'tiktok'    => 'https://www.tiktok.com/@laxapanasteel',
+	'x'         => 'https://x.com/LankaSSLltd',
+	'youtube'   => 'https://www.youtube.com/@laxapanasteel',
 	'linkedin'  => 'https://www.linkedin.com/company/6755348/',
 ];
 
 $LOCATIONS = [
 	[
-		'label'   => 'Corporate Office',
-		'address' => '53A, Ward Place, Colombo 07, Sri Lanka',
-		'tel'     => ['+94 11 771 5300-3', '+94 11 493 2416'],
-		'fax'     => '+94 11 269 6148',
+		'label'   => 'Registered Office',
+		'address' => 'No. 98, Sri Sangaraja Mawatha, Colombo 10, Sri Lanka',
+		'tel'     => [],
 		'email'   => 'sales@lankassl.com',
-		'map'     => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10822.062174940558!2d79.86978741393571!3d6.9194600192890245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25974702bc19d%3A0xaefb60e42e63ad37!2sLanka%20Special%20Steels%20Ltd!5e0!3m2!1sen!2slk!4v1709176421515!5m2!1sen!2slk',
-		'link'    => 'https://maps.google.com/?q=Lanka+Special+Steels+Ltd+Ward+Place+Colombo',
+		'map'     => 'https://maps.google.com/maps?q=No.%2098%2C%20Sri%20Sangaraja%20Mawatha%2C%20Colombo%2010%2C%20Sri%20Lanka&z=16&output=embed',
+		'link'    => 'https://maps.google.com/?q=No.+98+Sri+Sangaraja+Mawatha+Colombo+10+Sri+Lanka',
 	],
 	[
-		'label'   => 'Factory',
-		'address' => 'LINDEL, Pattiwilla Road, Makola, Sapugaskanda, Sri Lanka',
-		'tel'     => ['+94 11 433 5374'],
-		'fax'     => '+94 11 240 0898',
+		'label'   => 'Corporate Office & Factory',
+		'address' => 'No. 5, 6, 7 LINDEL, Pattiwila Road, Sapugaskanda, Makola, Sri Lanka',
+		'tel'     => ['+94 11 771 5300', '+94 11 433 5374'],
 		'email'   => 'sales@lankassl.com',
 		'map'     => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.419165509613!2d79.9490373!3d6.9597802999999985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae257b93f5d2f6d%3A0x449b2987dbe21d31!2sLanka%20Special%20Steels%20Factory!5e0!3m2!1sen!2slk!4v1709200520836!5m2!1sen!2slk',
 		'link'    => 'https://maps.google.com/?q=Lanka+Special+Steels+Factory+Sapugaskanda',
 	],
 ];
 
-$SALES_CONTACT = ['name' => 'Mr. W. P. Chinthaka Gayan', 'role' => 'Head of Sales & Marketing', 'mobile' => '+94 77 393 6928'];
+$SALES_CONTACT = ['name' => 'Mr. W. P. Chinthaka Gayan', 'role' => 'Head of Sales & Marketing'];
 
 $STANDARDS = ['SLS 139:2003', 'SLS 31:1988', 'IS 280:2006 · BIS', 'ISO 9001:2015', 'ISO 45001:2018'];
 
@@ -82,9 +84,7 @@ $PRODUCTS = [
 		'short'    => 'Nail Wire',
 		'badge'    => 'Cold Drawn & Annealed',
 		'family'   => 'Drawn Wire',
-		'image'    => 'products/nail-wire.webp',
-		'photo'    => true,
-		'gallery'  => ['products/nail-wire-2.webp'],
+		'image'    => 'products/nail-wire-v2.webp',
 		'lead'     => 'Precision cold-drawn mild steel wire with dependable mechanical properties — the raw material behind nails, mesh and reinforcement.',
 		'overview' => [
 			'Our nail wire is drawn from high-quality mild steel wire rods using premium German wire-drawing technology, delivering consistent dimensional accuracy, a superior surface finish and dependable mechanical properties.',
@@ -109,8 +109,9 @@ $PRODUCTS = [
 		'short'    => 'GI Barbed Wire',
 		'badge'    => 'SLS 31 Certified',
 		'family'   => 'Fencing',
-		'image'    => 'products/barbed-wire.webp',
-		'gallery'  => ['products/barbed-wire-pack.webp'],
+		'image'    => 'products/barbed-25kg.webp',
+		'gallery'  => ['products/barbed-25kg.webp', 'products/barbed-10kg.webp'],
+		'mascot'   => 'brand/barbed-mascot.webp',
 		'lead'     => 'The only SLS 31:1988 certified GI barbed wire made in Sri Lanka from our own SLS 139 galvanized wire — in one integrated facility.',
 		'overview' => [
 			'Lanka SSL is the only manufacturer in Sri Lanka producing GI barbed wire certified under SLS 31:1988 while also manufacturing its core galvanized wire to SLS 139:2003 within a single integrated facility. This vertically integrated approach gives us end-to-end quality control and complete traceability at every stage.',
@@ -169,8 +170,8 @@ $PRODUCTS = [
 		'short'    => 'PVC-Coated Barbed Wire',
 		'badge'    => 'LAXAPANA',
 		'family'   => 'Fencing',
-		'image'    => 'products/pvc-barbed-wire.webp',
-		'gallery'  => ['products/pvc-barbed-wire-20.webp'],
+		'image'    => 'products/pvc-barbed-20kg.webp',
+		'gallery'  => ['products/pvc-barbed-20kg.webp', 'products/pvc-barbed-10kg.webp'],
 		'lead'     => 'Premium barbed wire with a refined PVC finish — built for modern urban settings and highly corrosive environments.',
 		'overview' => [
 			'Made entirely on a single integrated line — hot-dip galvanized wire, PVC coating and barbed wire fabrication — our PVC-coated barbed wire benefits from strict process control, consistency and traceability at every stage.',
@@ -199,8 +200,7 @@ $PRODUCTS = [
 		'short'    => 'PVC Chain Link Fence',
 		'badge'    => 'New · 2026',
 		'family'   => 'Chain Link',
-		'image'    => 'products/pvc-chain-link.webp',
-		'gallery'  => ['products/chain-link-duo.webp'],
+		'image'    => 'products/pvc-chain-link-two.webp',
 		'mascot'   => true,
 		'lead'     => 'A value-added fencing solution made from our own premium GI and PVC-coated wire — strong, durable and good-looking.',
 		'overview' => [
@@ -230,7 +230,7 @@ $PRODUCTS = [
 		'short'    => 'GI Chain Link Fence',
 		'badge'    => 'New · 2026',
 		'family'   => 'Chain Link',
-		'image'    => 'products/gi-chain-link.webp',
+		'image'    => 'products/gi-chain-link-two.webp',
 		'lead'     => 'A cost-effective, dependable chain link fence for infrastructure and construction — in commercial or heavy galvanizing.',
 		'overview' => [
 			'Introduced in 2026 to meet growing demand in the infrastructure and construction sectors, our galvanized chain link fence is made from high-quality hot-dip galvanized wire. Choose commercial coating or heavy galvanizing for the corrosion resistance and service life your project needs.',
@@ -306,16 +306,14 @@ $PRODUCTS = [
 		'short'    => 'LAXAPANA LED Bulbs',
 		'badge'    => '2-Year Warranty',
 		'family'   => 'LAXAPANA Consumer Range',
-		'image'    => 'products/laxapana-led.webp',
-		'photo'    => true,
-		'gallery'  => ['products/laxapana-led-range.webp'],
+		'image'    => 'products/laxapana-led-v2.webp',
 		'lead'     => 'Bright, energy-saving Day Light LED bulbs that last up to 25,000 hours — backed by a 2-year warranty.',
 		'overview' => [
 			'The LAXAPANA LED range delivers bright Day Light illumination while using far less energy than conventional bulbs. Rated to last up to 25,000 hours, each bulb is backed by a 2-year warranty for peace of mind.',
-			'Available from 5 W to 15.5 W in both B22 pin and E27 screw caps, there is a LAXAPANA LED to fit virtually every light fitting in Sri Lankan homes, shops and offices.',
+			'Available from 3 W to 15.5 W in both B22 pin and E27 screw caps, there is a LAXAPANA LED to fit virtually every light fitting in Sri Lankan homes, shops and offices.',
 		],
 		'specs' => [
-			'Wattage'   => '5 W – 15.5 W',
+			'Wattage'   => '3 W – 15.5 W',
 			'Caps'      => 'B22 pin · E27 screw',
 			'Light'     => 'Day Light',
 			'Life'      => 'Up to 25,000 hours',
@@ -330,7 +328,7 @@ $PRODUCTS = [
 			'title' => 'Range',
 			'head'  => ['Wattage', 'Cap types'],
 			'note' => 'All with a 2-year warranty',
-			'rows'  => [['5 W', 'B22 pin · E27 screw'], ['7 W', 'B22 pin · E27 screw'], ['9 W', 'B22 pin · E27 screw'], ['12 W', 'B22 pin · E27 screw'], ['15.5 W', 'B22 pin · E27 screw']],
+			'rows'  => [['3 W', 'B22 pin · E27 screw'], ['5 W', 'B22 pin · E27 screw'], ['7 W', 'B22 pin · E27 screw'], ['9 W', 'B22 pin · E27 screw'], ['12 W', 'B22 pin · E27 screw'], ['15.5 W', 'B22 pin · E27 screw']],
 		],
 		'applications' => ['Homes', 'Shops', 'Offices', 'Hotels & restaurants', 'Outdoor covered areas'],
 	],
@@ -339,8 +337,7 @@ $PRODUCTS = [
 		'short'    => 'MARQUIS Water Pumps',
 		'badge'    => 'Complete Range',
 		'family'   => 'Distributed Brands',
-		'image'    => 'products/marquiz-pump.webp',
-		'gallery'  => ['products/marquiz-jet.webp', 'products/marquiz-booster.webp', 'products/marquiz-submersible.webp', 'products/marquiz-controller.webp'],
+		'image'    => 'products/marquis-pumps.webp',
 		'lead'     => 'A complete range of domestic, agricultural and light-industrial water pumps — from centrifugal and jet pumps to submersibles and controllers.',
 		'overview' => [
 			'MARQUIS pumps cover almost every water-moving need: centrifugal and jet pumps for water supply and irrigation, peripheral and automatic booster pumps for household pressure, submersible pumps for drainage and wastewater, and borehole pumps for deep wells.',
@@ -378,7 +375,6 @@ $PRODUCTS = [
 		'badge'    => '61 Colours',
 		'family'   => 'Distributed Brands',
 		'image'    => 'products/toa-spray.webp',
-		'gallery'  => ['products/toa-chrome.webp', 'products/toa-fluorescent.webp', 'products/toa-heat.webp'],
 		'lead'     => 'Quick-drying aerosol spray paint in 61 colours and finishes — from everyday colours to metallic, fluorescent and heat-resistant.',
 		'overview' => [
 			'TOA Spray is a convenient, quick-drying aerosol paint for fast, even coverage on metal, wood and many other surfaces. It is ideal for touch-ups, DIY projects, furniture, vehicles, machinery and signage.',
@@ -409,7 +405,40 @@ $PRODUCTS = [
 		],
 		'applications' => ['Metal work', 'Furniture', 'Vehicles', 'Machinery', 'Signage', 'DIY & touch-ups'],
 	],
+	'welding-electrodes' => [
+		'name'     => 'LAXAPANA Welding Electrodes',
+		'short'    => 'Welding Electrodes',
+		'badge'    => 'PW-13 · E6013',
+		'family'   => 'LAXAPANA Consumer Range',
+		'image'    => 'products/welding-pw13.webp',
+		'lead'     => 'LAXAPANA PW-13 general-purpose mild steel electrodes — classified E6013 for smooth, stable arcs and clean, easy welding.',
+		'overview' => [
+			'LAXAPANA PW-13 welding electrodes are classified E6013 under AWS A5.1 — the familiar all-position rutile electrode for mild steel. They are made for steady arcs, easy striking and tidy welds in everyday fabrication and repair work.',
+			'Each pack carries the recommended welding current and equivalent international classifications, so welders can set up with confidence. They are available through the same island-wide dealer network as our wire products.',
+		],
+		'specs' => [
+			'Classification' => 'AWS A5.1 · E6013',
+			'Equivalents'    => 'ISO 2560 E 432 R11 · AS 2321 D 4313',
+			'Pack'           => '2.5 mm × 300 mm · 2.5 kg',
+			'Brand'          => 'LAXAPANA',
+		],
+		'highlights' => [
+			'E6013 classification — suits most mild steel work',
+			'Recommended current printed on every pack',
+			'Available island-wide through our dealers',
+		],
+		'stock' => [
+			'title' => 'Recommended current (as printed on the pack)',
+			'note'  => 'Ø = electrode diameter',
+			'head'  => ['Ø (mm)', 'Current (A)'],
+			'rows'  => [['3.2', '140 – 180'], ['4.0', '160 – 200'], ['5.0', '200 – 240']],
+		],
+		'applications' => ['Mild steel fabrication', 'Gates & grilles', 'Repairs & maintenance', 'Light structural work', 'Agricultural equipment'],
+	],
 ];
+
+// Display order (#12)
+$PRODUCTS = array_replace(array_fill_keys(['hot-dipped-gi-wire', 'nail-wire', 'barbed-wire', 'pvc-coated-gi-wire', 'pvc-coated-barbed-wire', 'pvc-chain-link-fence', 'gi-chain-link-fence', 'laxapana-led-bulbs', 'marquis-water-pumps', 'toa-spray', 'welding-electrodes', 'laxapana-batteries', 'tata-wire-products'], null), $PRODUCTS);
 
 $SPEC_TABLES = [
 	'commercial' => [
@@ -480,7 +509,6 @@ $STRENGTHS = [
 	['Short lead times', 'Efficient production and logistics from order to delivery.'],
 	['Flexible orders', 'Specific customer requirements met — even for small batches.'],
 	['Century-old backing', 'Part of a diversified conglomerate with over 100 years of heritage.'],
-	['Continuous improvement', 'Driven by innovation and employee engagement.'],
 ];
 
 $PILLARS = [
@@ -493,30 +521,26 @@ $PILLARS = [
 $BOARD = [
 	['name' => 'Mr. S.D.R. Arudpragasam', 'cred' => 'FCMA (UK)', 'role' => 'Chairman',
 	 'bio' => 'Appointed to the Board on 31st March 2015 and Chairman from 1st April 2015. He serves as Chairman of several subsidiaries of The Colombo Fort Land & Building PLC and is Deputy Chairman of The Colombo Fort Land & Building PLC and Lankem Ceylon PLC. He is also Managing Director of E.B. Creasy & Company PLC, and a Fellow of the Chartered Institute of Management Accountants (UK).'],
-	['name' => 'Mr. S. Rajaratnam', 'cred' => 'B.Sc., CA', 'role' => 'Director',
+	['name' => 'Mr. S. Rajaratnam', 'cred' => 'B.Sc., CA', 'role' => 'Managing Director',
 	 'bio' => 'Appointed to the Board on 31st March 2015. He is Deputy Managing Director of E.B. Creasy & Company PLC, with other directorships in The Colombo Fort Land & Building Group. He holds a B.Sc. in Business Administration from Boston College, USA, and is a member of the Institute of Chartered Accountants in Australia.'],
 	['name' => 'Mr. R.C.A. Welikala', 'cred' => '', 'role' => 'Director',
 	 'bio' => 'Brings extensive experience in marketing fast-moving consumer goods and has developed key brands in the E.B. Creasy Group into market leaders. He holds other directorships within The Colombo Fort Land & Building Group.'],
-	['name' => 'Mr. P.M.A. Sirimane', 'cred' => 'FCA, MBA', 'role' => 'Director',
-	 'bio' => 'Appointed to the Board on 31st March 2015. He serves on the Board of E.B. Creasy & Company PLC and several of its subsidiaries. He was previously Managing Director/CEO of Mercantile Leasing Ltd., Group Finance Director of United Tractor & Equipment Ltd. and CFO of Sri Lanka Telecom. He is a Fellow of the Institute of Chartered Accountants of Sri Lanka and holds an MBA from Swinburne University, Australia.'],
 	['name' => 'Mr. S.W. Gunawardena', 'cred' => 'B.Sc., MBA', 'role' => 'Director',
 	 'bio' => 'Appointed to the Board on 31st March 2015. He serves on the Board of E.B. Creasy & Company PLC and several subsidiaries. A B.Sc. graduate of the University of Colombo, he holds an MBA from the Postgraduate Institute of Management, University of Sri Jayewardenepura.'],
-	['name' => 'Mr. R.N. Bopearatchy', 'cred' => 'B.Sc. (Cey), Dip. BM, MBA (Col)', 'role' => 'Director',
-	 'bio' => 'Appointed to the Board on 18th January 2016. He has considerable expertise in product development, manufacturing and marketing of pesticides, pharmaceuticals and consumer products, and has chaired the Pesticide Association of Sri Lanka and the Toxicological Society of Sri Lanka. He holds several directorships within The Colombo Fort Land & Building Group.'],
 	// TODO: confirm Dasun's full name, credentials and profile.
 	['name' => 'Mr. Dasun', 'cred' => '', 'role' => 'Director', 'bio' => ''],
 ];
 
-$CEO = ['name' => 'Mr. Janaka Perera', 'role' => 'Chief Executive Officer', 'photo' => 'people/ceo.webp'];
+$CEO = ['name' => 'Mr. Janaka Perera', 'role' => 'Chief Executive Officer', 'photo' => 'people/ceo-v2.webp'];
 
 $MANAGEMENT = [
 	['Mr. W. P. Chinthaka Gayan', 'Head of Sales & Marketing', 'chinthaka-gayan'],
 	['Mr. H. Rashika Seram', 'Senior Manager – Quality Assurance & QMS', 'rashika-seram'],
 	['Mr. Thusitha Nissanga', 'Senior Manager – Sales & Marketing', 'thusitha-nissanga'],
-	['Ms. P. Roshani Tissera', 'Chief Financial Officer', 'm12'],
-	['Mr. G. H. P. Chamith Janaka', 'Senior Manager – HR Business Partner', 'm1'],
-	['Mr. P. K. Ishan Buddhika Priyalal', 'Manager – IT & Material', 'm2'],
-	['Ms. K. M. Ganga Perera', 'Manager – Sales Administration', 'm11'],
+	['Ms. P. Roshani Tissera', 'Chief Financial Officer', 'roshini-tissera'],
+	['Mr. G. H. P. Chamith Janaka', 'Senior Manager – HR Business Partner', 'chamith-janaka'],
+	['Mr. P. K. Ishan Buddhika Priyalal', 'Manager – IT & Material', 'ishan-buddhika'],
+	['Ms. K. M. Ganga Perera', 'Manager – Sales Administration', 'ganga-perera'],
 ];
 
 /* ------------------------------------------------------------------ */
@@ -543,6 +567,9 @@ $CERTIFICATES = [
 	['SLS 139:2003', 'Sri Lanka Standards Institution', 'Galvanized mild steel wire for general engineering purposes.', 'certs/cert2.webp', 'marks/sls.png'],
 	['ISO 45001:2018', 'Occupational Health & Safety', 'Manufacture, marketing and supply of galvanized mild steel wire and barbed wire.', 'certs/cert3.webp', 'marks/iso45001.png'],
 	['IS 280:2006', 'Bureau of Indian Standards (BIS)', 'Galvanized wire for export to India — one of few foreign manufacturers so certified.', 'certs/cert4.webp', 'marks/is280.png'],
+	// TODO: add SLS logos/certificate scans when supplied
+	['SLS 31:1988', 'Sri Lanka Standards Institution', 'Galvanized mild steel barbed wire.', null, null],
+	['SLS 1148', 'Sri Lanka Standards Institution', '', null, null],
 ];
 
 /*
@@ -608,23 +635,32 @@ foreach ([['G12', '63 × 63 mm', ['0.9', '1.2', '1.5', '1.8']], ['G12', '50 × 5
 }
 
 $leds = [];
-foreach (['5', '7', '9', '12', '15.5'] as $w) foreach (['B22 pin', 'E27 screw'] as $cap) $leds[] = "{$w} W · $cap";
+$ledImages = [];
+foreach (['3', '5', '7', '9', '12', '15.5'] as $w) foreach (['B22 pin' => 'pin', 'E27 screw' => 'screw'] as $cap => $file) {
+	$leds[] = "{$w} W · $cap";
+	$ledImages["{$w} W · $cap"] = "products/led/{$w}w-$file.webp";
+}
 
 $ORDER_OPTIONS = [
 	'hot-dipped-gi-wire'     => ['unit' => 'kg', 'label' => 'Diameter', 'variants' => ['1.60 mm (20 – 35 kg coils)', '2.00 mm (20 – 35 kg coils)', '2.50 mm (20 – 35 kg coils)', '3.00 mm (20 – 35 kg coils)', '4.00 mm (20 – 35 kg coils)', '3.50 mm (50 – 75 kg coils)', '5.00 mm (50 – 75 kg coils)', 'Other size (specify in note)']],
 	'nail-wire'              => ['unit' => 'kg', 'label' => 'Diameter', 'variants' => ['1.4 – 2.0 mm', '2.0 – 2.5 mm', '2.5 – 3.0 mm', '3.0 – 5.0 mm', 'Annealed (specify size in note)']],
-	'barbed-wire'            => ['unit' => 'pack', 'label' => 'Pack', 'variants' => ['2.00 mm · 10 kg pack', '2.00 / 2.50 mm · 25 kg pack (SLS 31)']],
+	'barbed-wire'            => ['unit' => 'pack', 'label' => 'Pack', 'variants' => ['2.00 / 2.50 mm · 25 kg pack (SLS 31)', '2.00 mm · 10 kg pack'],
+		'images' => ['2.00 / 2.50 mm · 25 kg pack (SLS 31)' => 'products/barbed-25kg.webp', '2.00 mm · 10 kg pack' => 'products/barbed-10kg.webp']],
 	'pvc-coated-gi-wire'     => ['unit' => 'coil', 'label' => 'Size', 'variants' => ['2.60 mm · Dark green · 25 kg coil', 'Other size (specify in note)']],
-	'pvc-coated-barbed-wire' => ['unit' => 'pack', 'label' => 'Pack', 'variants' => ['2.60 mm · 10 kg pack', '2.60 mm · Dark green · 20 kg pack']],
+	'pvc-coated-barbed-wire' => ['unit' => 'pack', 'label' => 'Pack', 'variants' => ['2.60 mm · Dark green · 20 kg pack', '2.60 mm · 10 kg pack'],
+		'images' => ['2.60 mm · Dark green · 20 kg pack' => 'products/pvc-barbed-20kg.webp', '2.60 mm · 10 kg pack' => 'products/pvc-barbed-10kg.webp']],
 	'pvc-chain-link-fence'   => ['unit' => 'roll', 'label' => 'Gauge · mesh · height', 'variants' => array_merge($chainLink, ['Custom size (specify in note)'])],
 	'gi-chain-link-fence'    => ['unit' => 'roll', 'label' => 'Coating', 'variants' => ['Commercial coating', 'Heavy galvanizing'], 'note_hint' => 'Height, mesh size and quantity details'],
 	'tata-wire-products'     => ['unit' => 'kg', 'label' => 'Product', 'variants' => $PRODUCTS['tata-wire-products']['range'], 'note_hint' => 'Size / specification required'],
 	'laxapana-batteries'     => ['unit' => 'piece', 'label' => 'Size', 'variants' => ['AA · Super Heavy Duty', 'D · Super Heavy Duty', '9V · Extra Heavy Duty']],
-	'laxapana-led-bulbs'     => ['unit' => 'piece', 'label' => 'Wattage · cap', 'variants' => $leds],
-	'marquis-water-pumps'    => ['unit' => 'unit', 'label' => 'Model series', 'variants' => ['Centrifugal · MCP', 'Centrifugal · 2MCP', 'Centrifugal · MGA / MHF', 'Jet · MJM', 'Jet · MJSW', 'Peripheral · MKP', 'Automatic booster · MQS', 'Submersible · SA', 'Submersible · 3SA', 'Submersible · MSAm', 'Submersible · SP', 'Submersible · SUP', 'Submersible · V', 'Borehole · 3SWM', 'Borehole · 4SWM', 'Pressure controller · EC-2'], 'note_hint' => 'Required power / head / flow, if known'],
-	'toa-spray'              => ['unit' => 'can', 'label' => 'Colour', 'variants' => array_map(fn($code, $name) => "No. $code · $name", array_keys($TOA_COLOURS), $TOA_COLOURS)],
+	'laxapana-led-bulbs'     => ['unit' => 'piece', 'label' => 'Wattage · cap', 'variants' => $leds, 'images' => $ledImages],
+	'marquis-water-pumps'    => ['unit' => 'unit', 'label' => 'Model series', 'variants' => ['Centrifugal · MCP', 'Centrifugal · 2MCP', 'Centrifugal · MGA / MHF', 'Jet · MJM', 'Jet · MJSW', 'Peripheral · MKP', 'Automatic booster · MQS', 'Submersible · SA', 'Submersible · 3SA', 'Submersible · MSAm', 'Submersible · SP', 'Submersible · SUP', 'Submersible · V', 'Borehole · 3SWM', 'Borehole · 4SWM', 'Pressure controller · EC-2'], 'note_hint' => 'Required power / head / flow, if known',
+		'images' => ['Centrifugal · MCP' => 'products/pumps/mcp.webp', 'Centrifugal · 2MCP' => 'products/pumps/2mcp.webp', 'Centrifugal · MGA / MHF' => 'products/pumps/mga-mhf.webp', 'Jet · MJM' => 'products/pumps/mjm102.webp', 'Jet · MJSW' => 'products/pumps/mjsw.webp', 'Peripheral · MKP' => 'products/pumps/mkp.webp', 'Automatic booster · MQS' => 'products/pumps/mqs.webp', 'Submersible · SA' => 'products/pumps/sa.webp', 'Submersible · 3SA' => 'products/pumps/3sa.webp', 'Submersible · MSAm' => 'products/pumps/msam.webp', 'Submersible · SP' => 'products/pumps/sp.webp', 'Submersible · SUP' => 'products/pumps/sup.webp', 'Submersible · V' => 'products/pumps/v.webp', 'Borehole · 3SWM' => 'products/pumps/3swm.webp', 'Borehole · 4SWM' => 'products/pumps/4swm.webp', 'Pressure controller · EC-2' => 'products/pumps/ec-2.webp']],
+	'toa-spray'              => ['unit' => 'can', 'label' => 'Colour', 'variants' => array_map(fn($code, $name) => "No. $code · $name", array_keys($TOA_COLOURS), $TOA_COLOURS),
+		'images' => array_combine(array_map(fn($code, $name) => "No. $code · $name", array_keys($TOA_COLOURS), $TOA_COLOURS), array_map(fn($code) => 'products/toa/' . strtolower((string) $code) . '.webp', array_keys($TOA_COLOURS)))],
+	'welding-electrodes'     => ['unit' => 'pack', 'label' => 'Size', 'variants' => ['2.5 mm × 300 mm · 2.5 kg pack', 'Other size (specify in note)']],
 ];
-unset($chainLink, $leds);
+unset($chainLink, $leds, $ledImages);
 
 $ORDER_STATUSES = [
 	'pending'    => 'Pending',

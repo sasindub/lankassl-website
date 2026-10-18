@@ -889,3 +889,27 @@ body:not(.no-hero) .site-header:not(.is-scrolled) .brand-logo .logo-white { disp
 [data-theme="light"] .hero-watermark { opacity: .08; }
 .hero-watermark .brand-logo, .hero-watermark .brand-logo img { height: 100%; width: auto; }
 @media (max-width: 760px) { .hero-watermark { height: 52%; right: -6%; top: 58%; opacity: .07; } }
+
+/* ---------- October 2026 content update ---------- */
+.marks.marks-6 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 760px) { .marks.marks-6 { grid-template-columns: 1fr 1fr; } }
+.mark-text { height: 72px; min-width: 72px; padding: 0 14px; border-radius: 12px; display: grid; place-items: center; background: #fff; color: #2a2f6b; font-family: var(--f-display); font-weight: 700; font-size: 22px; letter-spacing: .04em; }
+.stats-row.two { grid-template-columns: repeat(2, 1fr); margin: 30px 0; }
+.strength-grid.three-col { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 900px) { .strength-grid.three-col { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .strength-grid.three-col { grid-template-columns: 1fr; } }
+/* home: six strengths + the gold card spanning two columns = two balanced rows */
+.strength-grid:has(.strength-cta) { grid-template-columns: repeat(4, 1fr); }
+.strength-cta { grid-column: span 2; }
+@media (max-width: 1000px) { .strength-grid:has(.strength-cta) { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .strength-grid:has(.strength-cta) { grid-template-columns: 1fr; } .strength-cta { grid-column: auto; } }
+.socials { flex-wrap: wrap; }
+.pd-visual .main-link { transition: opacity .2s ease; }
+.pd-visual .main-link.is-swapping { opacity: 0; }
+.mark .mark-text { color: #2a2f6b; font-size: 22px; font-weight: 700; }
+.site-footer .socials { gap: 8px; }
+.site-footer .socials a { width: 36px; height: 36px; }
+.site-footer .socials .ico { width: 16px; height: 16px; }
+.strength-grid.five-col { grid-template-columns: repeat(5, 1fr); }
+@media (max-width: 1100px) { .strength-grid.five-col { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 700px) { .strength-grid.five-col { grid-template-columns: 1fr; } }

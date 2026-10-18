@@ -5,7 +5,7 @@ page_hero('Achievements', 'Quality <span class="gold">certifications</span>', 'N
 
 <section class="section">
 	<div class="container">
-		<?php foreach ($CERTIFICATES as $c): ?>
+		<?php foreach (array_filter($CERTIFICATES, fn($c) => $c[3]) as $c): ?>
 			<div class="cert-row">
 				<div data-reveal>
 					<a class="cert-doc glightbox" href="<?= img($c[3]) ?>" data-gallery="certs" data-title="<?= e($c[0]) ?> certificate">

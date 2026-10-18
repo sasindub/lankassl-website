@@ -13,7 +13,7 @@ $preselect = $_GET['product'] ?? '';
 			<div class="info-list" data-stagger>
 				<div class="info"><span class="icon-box"><?= icon('phone') ?></span><div><strong>Call us</strong><a href="tel:<?= e(str_replace(' ', '', $COMPANY['phone'])) ?>"><?= e($COMPANY['phone_all']) ?></a></div></div>
 				<div class="info"><span class="icon-box"><?= icon('mail') ?></span><div><strong>Email</strong><a href="mailto:<?= e($COMPANY['email']) ?>"><?= e($COMPANY['email']) ?></a></div></div>
-				<div class="info"><span class="icon-box"><?= icon('users') ?></span><div><strong>Sales department</strong><p><?= e($SALES_CONTACT['name']) ?> · <?= e($SALES_CONTACT['role']) ?></p><a href="tel:<?= e(str_replace(' ', '', $SALES_CONTACT['mobile'])) ?>"><?= e($SALES_CONTACT['mobile']) ?></a></div></div>
+				<div class="info"><span class="icon-box"><?= icon('users') ?></span><div><strong>Sales department</strong><p><?= e($SALES_CONTACT['name']) ?> · <?= e($SALES_CONTACT['role']) ?></p><a href="mailto:<?= e($COMPANY['email']) ?>"><?= e($COMPANY['email']) ?></a></div></div>
 			</div>
 		</div>
 		<div class="form-card" data-reveal>
@@ -54,8 +54,7 @@ $preselect = $_GET['product'] ?? '';
 						<p class="eyebrow"><?= e($l['label']) ?></p>
 						<h3>Lanka Special Steels Limited</h3>
 						<p><?= icon('pin') ?><span><?= e($l['address']) ?></span></p>
-						<p><?= icon('phone') ?><span><?= e(implode(' · ', $l['tel'])) ?></span></p>
-						<p><?= icon('fax') ?><span>Fax <?= e($l['fax']) ?></span></p>
+						<?php if ($l['tel']): ?><p><?= icon('phone') ?><span><?= e(implode(' · ', $l['tel'])) ?></span></p><?php endif; ?>
 						<p><?= icon('mail') ?><a href="mailto:<?= e($l['email']) ?>"><?= e($l['email']) ?></a></p>
 						<div><a class="link-arrow" href="<?= e($l['link']) ?>" target="_blank" rel="noopener">Get directions <?= icon('arrow-ur') ?></a></div>
 					</div>
