@@ -96,3 +96,4 @@ body.admin { font-size: 15.5px; }
 	.panel { border-color: #ccc; background: #fff; }
 	.order-layout { grid-template-columns: 1fr 1fr; }
 }
+.table-wrap.flat table.data tfoot td { padding-left: 0; border-top: 1px solid var(--line); border-bottom: 0; }

@@ -207,7 +207,8 @@ function page_start(array $o = []): void
 			</div>
 			<div class="cart-body" data-cart-items data-lenis-prevent></div>
 			<div class="cart-foot">
-				<p class="cart-note">Prices and delivery are confirmed by our sales team after you place your order.</p>
+				<div class="cart-total" data-cart-total hidden><span>Subtotal</span><strong data-cart-subtotal></strong></div>
+				<p class="cart-note" data-cart-note>Prices and delivery are confirmed by our sales team after you place your order.</p>
 				<a class="btn btn-gold" href="<?= url('checkout') ?>" data-cart-checkout>Place order <?= icon('arrow') ?></a>
 			</div>
 		</div>
@@ -225,6 +226,7 @@ function page_start(array $o = []): void
 			<div class="field"><label for="add-qty">Quantity <span class="muted" data-add-unit></span></label>
 				<div class="qty"><button type="button" class="qty-btn" data-step="-1" aria-label="Decrease"><?= icon('minus') ?></button><input id="add-qty" data-add-qty type="number" min="1" max="100000" value="1" inputmode="numeric"><button type="button" class="qty-btn" data-step="1" aria-label="Increase"><?= icon('plus') ?></button></div>
 			</div>
+			<p class="order-price" data-add-price></p>
 			<button class="btn btn-gold" type="submit" value="add" data-add-submit><?= icon('cart') ?> Add to cart</button>
 		</form>
 	</dialog>
@@ -248,9 +250,25 @@ function catalog_json(): string
 			'image' => img($p['image']), 'photo' => !empty($p['photo']), 'url' => url('products/' . $slug),
 			'unit' => $o['unit'], 'label' => $o['label'], 'variants' => $o['variants'], 'noteHint' => $o['note_hint'] ?? '',
 			'images' => (object) array_map('img', $o['images'] ?? []),
+			'prices' => (object) ($o['prices'] ?? []),
 		];
 	}
 	return json_encode($out, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG);
+}
+
+/** Lowest listed price for a product, or null when it is priced on confirmation. */
+function from_price(string $slug): ?float
+{
+	global $ORDER_OPTIONS;
+	$prices = $ORDER_OPTIONS[$slug]['prices'] ?? [];
+	return $prices ? (float) min($prices) : null;
+}
+
+/** Small "From Rs. …" line for product cards. */
+function price_tag(string $slug): string
+{
+	$p = from_price($slug);
+	return $p !== null ? '<span class="price-tag">From <strong>' . e(lkr($p)) . '</strong></span>' : '';
 }
 
 /** "Add to cart" button for product cards. */

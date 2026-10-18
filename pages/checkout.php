@@ -77,7 +77,11 @@ page_start(['title' => 'Checkout', 'body' => 'no-hero page-checkout']);
 					<div class="summary-head"><h2 class="h-md">Order summary</h2><span class="muted" data-summary-count></span></div>
 					<div class="summary-items" data-summary-items></div>
 					<small class="field-error" data-error="items"></small>
-					<p class="cart-note">No payment is taken online. We’ll call or email you to confirm the final price and delivery.</p>
+					<div class="summary-total" data-summary-total hidden>
+						<div class="cart-total"><span>Subtotal</span><strong data-summary-subtotal></strong></div>
+						<small class="muted" data-summary-tbc></small>
+					</div>
+					<p class="cart-note">No payment is taken online. Our sales team will call or email you to confirm availability, delivery and the final amount.</p>
 					<button class="btn btn-gold btn-block" type="submit" data-place-order><?= icon('bag') ?> Place order</button>
 					<p class="form-status" role="status" aria-live="polite" data-checkout-status></p>
 				</div>

@@ -64,16 +64,24 @@ admin_start('Order ' . $order['order_no'], $admin);
 			<h2>Items <span class="muted">(<?= count($items) ?>)</span></h2>
 			<div class="table-wrap flat">
 				<table class="data small">
-					<thead><tr><th>Product</th><th>Option</th><th class="num">Quantity</th></tr></thead>
+					<thead><tr><th>Product</th><th>Option</th><th class="num">Quantity</th><th class="num">Unit price</th><th class="num">Total</th></tr></thead>
 					<tbody>
 					<?php foreach ($items as $it): ?>
 						<tr>
 							<td><strong><?= e($it['product_name']) ?></strong></td>
 							<td><?= e($it['variant']) ?></td>
 							<td class="num"><?= number_format((int) $it['quantity']) ?> <?= e(unit_label($it['unit'], (int) $it['quantity'])) ?></td>
+							<td class="num"><?= $it['unit_price'] !== null ? e(lkr((float) $it['unit_price'])) : '<span class="muted">To confirm</span>' ?></td>
+							<td class="num"><?= $it['line_total'] !== null ? e(lkr((float) $it['line_total'])) : '—' ?></td>
 						</tr>
 					<?php endforeach; ?>
 					</tbody>
+					<tfoot>
+						<tr><td colspan="4" class="num"><strong>Subtotal (priced items)</strong></td><td class="num"><strong><?= $order['subtotal'] !== null ? e(lkr((float) $order['subtotal'])) : '—' ?></strong></td></tr>
+						<?php if (array_filter($items, fn($it) => $it['unit_price'] === null)): ?>
+							<tr><td colspan="5" class="num muted">Items marked “To confirm” need a price from the sales team.</td></tr>
+						<?php endif; ?>
+					</tfoot>
 				</table>
 			</div>
 		</section>

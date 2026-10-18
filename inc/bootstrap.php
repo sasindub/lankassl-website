@@ -22,6 +22,12 @@ function e(?string $value): string
 	return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
 }
 
+/** Format an LKR amount: Rs. 12,197.42 (whole rupees drop the decimals). */
+function lkr(float $amount): string
+{
+	return 'Rs. ' . number_format($amount, fmod($amount, 1.0) == 0.0 ? 0 : 2);
+}
+
 function is_active(string ...$routes): bool
 {
 	return defined('HEADER_TITLE') && in_array(HEADER_TITLE, $routes, true);

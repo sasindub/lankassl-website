@@ -30,7 +30,7 @@ $matching = (int) $countStmt->fetchColumn();
 $pages = max(1, (int) ceil($matching / $perPage));
 $page = min($page, $pages);
 
-$stmt = db()->prepare("SELECT id, order_no, status, customer_name, company, phone, city, district, item_count, created_at
+$stmt = db()->prepare("SELECT id, order_no, status, customer_name, company, phone, city, district, item_count, subtotal, created_at
 	FROM orders $sqlWhere ORDER BY created_at DESC, id DESC LIMIT $perPage OFFSET " . (($page - 1) * $perPage));
 $stmt->execute($params);
 $orders = $stmt->fetchAll();
@@ -74,10 +74,10 @@ admin_start('Orders', $admin);
 
 <div class="table-wrap">
 	<table class="data admin-table">
-		<thead><tr><th>Order</th><th>Customer</th><th>Location</th><th>Items</th><th>Status</th><th>Placed</th><th></th></tr></thead>
+		<thead><tr><th>Order</th><th>Customer</th><th>Location</th><th>Items</th><th>Total</th><th>Status</th><th>Placed</th><th></th></tr></thead>
 		<tbody>
 		<?php if (!$orders): ?>
-			<tr><td colspan="7" class="empty-row"><?= $q || $status ? 'No orders match your filters.' : 'No orders yet. New orders from the website will appear here.' ?></td></tr>
+			<tr><td colspan="8" class="empty-row"><?= $q || $status ? 'No orders match your filters.' : 'No orders yet. New orders from the website will appear here.' ?></td></tr>
 		<?php endif; ?>
 		<?php foreach ($orders as $o): $href = admin_url('order.php', ['id' => $o['id']]); ?>
 			<tr class="row-link" data-href="<?= e($href) ?>">
@@ -85,6 +85,7 @@ admin_start('Orders', $admin);
 				<td><strong><?= e($o['customer_name']) ?></strong><?php if ($o['company']): ?><br><span class="muted"><?= e($o['company']) ?></span><?php endif; ?><br><span class="muted"><?= e($o['phone']) ?></span></td>
 				<td><?= e($o['city']) ?><br><span class="muted"><?= e($o['district']) ?></span></td>
 				<td><?= (int) $o['item_count'] ?></td>
+				<td><?= $o['subtotal'] !== null ? e(lkr((float) $o['subtotal'])) : '<span class="muted">To confirm</span>' ?></td>
 				<td><?= status_badge($o['status']) ?></td>
 				<td><?= e(date('d M Y', strtotime($o['created_at']))) ?><br><span class="muted"><?= e(date('g:i A', strtotime($o['created_at']))) ?></span></td>
 				<td><a class="link-arrow" href="<?= e($href) ?>" aria-label="Open order <?= e($o['order_no']) ?>"><?= icon('arrow') ?></a></td>

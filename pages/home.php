@@ -107,7 +107,7 @@ $featured = $PRODUCTS['hot-dipped-gi-wire'];
 					<div class="p-card-body">
 						<h3><?= e($p['short']) ?></h3>
 						<p><?= e($p['lead']) ?></p>
-						<div class="p-card-actions"><span class="link-arrow">Learn more <?= icon('arrow') ?></span><?= add_to_cart_button($slug) ?></div>
+						<?= price_tag($slug) ?><div class="p-card-actions"><span class="link-arrow">Learn more <?= icon('arrow') ?></span><?= add_to_cart_button($slug) ?></div>
 					</div>
 					<a class="p-card-link" href="<?= url('products/' . $slug) ?>" aria-label="<?= e($p['name']) ?>"></a>
 				</article>

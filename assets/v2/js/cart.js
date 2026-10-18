@@ -39,6 +39,41 @@
 
 	var cart = load();
 
+	function priceOf(slug, variant) {
+		var p = catalog[slug];
+		var v = p && p.prices ? p.prices[variant] : undefined;
+		return typeof v === 'number' ? v : null;
+	}
+	function money(n) {
+		var whole = Math.round(n * 100) % 100 === 0;
+		return 'Rs. ' + n.toLocaleString('en-US', { minimumFractionDigits: whole ? 0 : 2, maximumFractionDigits: 2 });
+	}
+	function totals() {
+		var sum = 0, priced = 0, unpriced = 0;
+		cart.forEach(function (it) {
+			var u = priceOf(it.slug, it.variant);
+			if (u === null) unpriced++; else { priced++; sum += u * it.qty; }
+		});
+		return { sum: Math.round(sum * 100) / 100, priced: priced, unpriced: unpriced };
+	}
+	function priceText(slug, variant, unit) {
+		var u = priceOf(slug, variant);
+		if (u !== null) return { html: true, text: money(u), unit: unit };
+		var p = catalog[slug];
+		return { html: false, text: p && p.prices && Object.keys(p.prices).length ? 'Price on confirmation' : '' };
+	}
+	function showPrice(target, slug, variant, unit) {
+		if (!target) return;
+		var t = priceText(slug, variant, unit);
+		target.textContent = '';
+		if (t.html) {
+			target.appendChild(el('strong', '', t.text));
+			target.appendChild(document.createTextNode(' per ' + unit));
+		} else {
+			target.textContent = t.text;
+		}
+	}
+
 	function variantImage(slug, variant) {
 		var p = catalog[slug];
 		return (p && p.images && p.images[variant]) || (p && p.image);
@@ -97,6 +132,15 @@
 		info.appendChild(name);
 		info.appendChild(el('span', 'line-variant', it.variant));
 		if (it.note) info.appendChild(el('span', 'line-note', '“' + it.note + '”'));
+		var unitPrice = priceOf(it.slug, it.variant);
+		var lp = el('span', 'line-price' + (unitPrice === null ? ' tbc' : ''));
+		if (unitPrice === null) {
+			lp.textContent = 'Price on confirmation';
+		} else {
+			lp.appendChild(document.createTextNode(money(unitPrice) + ' × ' + it.qty + ' = '));
+			lp.appendChild(el('strong', '', money(unitPrice * it.qty)));
+		}
+		info.appendChild(lp);
 
 		var controls = el('div', 'line-controls');
 		var qty = el('div', 'qty qty-sm');
@@ -140,6 +184,18 @@
 			}
 		}
 		if (checkoutBtn) checkoutBtn.classList.toggle('is-disabled', !count);
+
+		var t = totals();
+		var totalBox = $('[data-cart-total]');
+		if (totalBox) {
+			totalBox.hidden = !t.priced;
+			$('[data-cart-subtotal]').textContent = money(t.sum);
+		}
+		var note = $('[data-cart-note]');
+		if (note) note.textContent = t.unpriced && t.priced
+			? 'Subtotal covers priced items. Items marked “price on confirmation” are quoted by our sales team.'
+			: t.priced ? 'Our sales team will confirm availability and delivery after you place your order.'
+			: 'Prices and delivery are confirmed by our sales team after you place your order.';
 
 		renderCheckout();
 	}
@@ -200,6 +256,7 @@
 			var src = variantImage(slug, sel.value);
 			$('[data-add-image]', dialog).src = src;
 			$('.add-thumb', dialog).classList.toggle('photo', !!p.photo && src === p.image);
+			showPrice($('[data-add-price]', dialog), slug, sel.value, p.unit);
 		};
 		sel.onchange();
 		var note = $('[data-add-note]', dialog);
@@ -236,6 +293,10 @@
 		var link = main && main.closest('a');
 		var sel = form.elements.variant;
 		var hasImages = catalog[slugForImg] && catalog[slugForImg].images && Object.keys(catalog[slugForImg].images).length;
+		var priceEl = $('[data-price-display]', form);
+		if (sel && priceEl && catalog[slugForImg]) {
+			sel.addEventListener('change', function () { showPrice(priceEl, slugForImg, sel.value, catalog[slugForImg].unit); });
+		}
 		if (main && sel && hasImages) {
 			// preload so switching feels instant
 			Object.keys(catalog[slugForImg].images).slice(0, 80).forEach(function (k) { var i = new Image(); i.src = catalog[slugForImg].images[k]; });
@@ -277,6 +338,12 @@
 		list.innerHTML = '';
 		cart.forEach(function (it, i) { list.appendChild(lineItem(it, i, false)); });
 		$('[data-summary-count]', co).textContent = cart.length + (cart.length === 1 ? ' item' : ' items');
+		var t = totals();
+		$('[data-summary-total]', co).hidden = !t.priced;
+		$('[data-summary-subtotal]', co).textContent = money(t.sum);
+		$('[data-summary-tbc]', co).textContent = t.unpriced
+			? '+ ' + t.unpriced + (t.unpriced === 1 ? ' item' : ' items') + ' priced on confirmation'
+			: '';
 	}
 
 	function showErrors(errors) {

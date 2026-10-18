@@ -22,6 +22,8 @@ $isPhoto = !empty($product['photo']);
 							<?php foreach ($opt['variants'] as $v): ?><option><?= e($v) ?></option><?php endforeach; ?>
 						</select>
 					</div>
+					<?php $firstPrice = $opt['prices'][$opt['variants'][0]] ?? null; ?>
+					<p class="order-price" data-price-display><?= $firstPrice !== null ? '<strong>' . e(lkr((float) $firstPrice)) . '</strong> per ' . e($opt['unit']) : (!empty($opt['prices']) ? 'Price on confirmation' : '') ?></p>
 					<div class="order-row">
 						<div class="field">
 							<label for="op-qty">Quantity <span class="muted">(<?= e($opt['unit']) ?>)</span></label>
@@ -141,7 +143,7 @@ $isPhoto = !empty($product['photo']);
 					<div class="p-card-media<?= !empty($p['photo']) ? ' photo' : '' ?>"><img src="<?= img($p['image']) ?>" alt="<?= e($p['name']) ?>" loading="lazy"></div>
 					<div class="p-card-body">
 						<h3><?= e($p['short']) ?></h3>
-						<div class="p-card-actions"><span class="link-arrow">View <?= icon('arrow') ?></span><?= add_to_cart_button($s) ?></div>
+						<?= price_tag($s) ?><div class="p-card-actions"><span class="link-arrow">View <?= icon('arrow') ?></span><?= add_to_cart_button($s) ?></div>
 					</div>
 					<a class="p-card-link" href="<?= url('products/' . $s) ?>" aria-label="<?= e($p['name']) ?>"></a>
 				</article>

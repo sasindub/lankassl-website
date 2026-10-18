@@ -68,7 +68,11 @@ function validate_order(array $in): array
 			continue;
 		}
 		$note = clean_text($item['note'] ?? '', 200);
+		// Price comes from the catalogue, never from the browser.
+		$unitPrice = $ORDER_OPTIONS[$slug]['prices'][$variant] ?? null;
 		$order['items'][] = [
+			'unit_price'   => $unitPrice,
+			'line_total'   => $unitPrice !== null ? round($unitPrice * $qty, 2) : null,
 			'product_slug' => $slug,
 			'product_name' => $PRODUCTS[$slug]['name'],
 			'variant'      => $note !== '' ? "$variant — $note" : $variant,
@@ -76,6 +80,9 @@ function validate_order(array $in): array
 			'quantity'     => $qty,
 		];
 	}
+
+	$priced = array_filter(array_column($order['items'], 'line_total'), fn($v) => $v !== null);
+	$order['subtotal'] = $priced ? round(array_sum($priced), 2) : null;
 
 	return [$order, $errors];
 }
@@ -103,18 +110,18 @@ function create_order(array $order, string $ip): string
 		}
 		if ($orderNo === null) throw new RuntimeException('Could not allocate an order number');
 
-		$stmt = $pdo->prepare('INSERT INTO orders (order_no, customer_name, company, email, phone, address_line1, address_line2, city, district, postal_code, notes, item_count, ip_address)
-			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+		$stmt = $pdo->prepare('INSERT INTO orders (order_no, customer_name, company, email, phone, address_line1, address_line2, city, district, postal_code, notes, item_count, subtotal, ip_address)
+			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
 		$stmt->execute([
 			$orderNo, $order['customer_name'], $order['company'], $order['email'], $order['phone'],
 			$order['address_line1'], $order['address_line2'], $order['city'], $order['district'], $order['postal_code'],
-			$order['notes'] !== '' ? $order['notes'] : null, count($order['items']), $ip,
+			$order['notes'] !== '' ? $order['notes'] : null, count($order['items']), $order['subtotal'], $ip,
 		]);
 		$orderId = (int) $pdo->lastInsertId();
 
-		$item = $pdo->prepare('INSERT INTO order_items (order_id, product_slug, product_name, variant, unit, quantity) VALUES (?, ?, ?, ?, ?, ?)');
+		$item = $pdo->prepare('INSERT INTO order_items (order_id, product_slug, product_name, variant, unit, quantity, unit_price, line_total) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
 		foreach ($order['items'] as $it) {
-			$item->execute([$orderId, $it['product_slug'], $it['product_name'], $it['variant'], $it['unit'], $it['quantity']]);
+			$item->execute([$orderId, $it['product_slug'], $it['product_name'], $it['variant'], $it['unit'], $it['quantity'], $it['unit_price'], $it['line_total']]);
 		}
 		$pdo->prepare('INSERT INTO order_status_history (order_id, status, note) VALUES (?, ?, ?)')
 			->execute([$orderId, 'pending', 'Order placed on the website']);

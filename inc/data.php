@@ -219,9 +219,15 @@ $PRODUCTS = [
 			'Custom heights and mesh sizes on request',
 		],
 		'stock' => [
-			'title' => 'Popular stock rolls (15 m)',
-			'head'  => ['Gauge', 'Mesh', 'Heights'],
-			'rows'  => [['G12', '63 × 63 mm', '0.9 · 1.2 · 1.5 · 1.8 m'], ['G12', '50 × 50 mm', '1.2 · 1.5 · 1.8 m'], ['G10', '63 × 63 mm', '1.2 · 1.5 · 1.8 m'], ['G10', '50 × 50 mm', '1.2 · 1.5 · 1.8 m']],
+			'title' => 'Price list — 15 m rolls',
+			'note'  => 'LKR per roll · updated 21 September 2026',
+			'head'  => ['Gauge', 'Mesh', 'Height', 'Price (LKR)'],
+			'rows'  => [
+				['G12', '63 × 63 mm', '0.9 m', '10,075.31'], ['G12', '63 × 63 mm', '1.2 m', '12,197.42'], ['G12', '63 × 63 mm', '1.5 m', '15,372.13'], ['G12', '63 × 63 mm', '1.8 m', '18,547.88'],
+				['G12', '50 × 50 mm', '1.2 m', '15,008.54'], ['G12', '50 × 50 mm', '1.5 m', '18,887.08'], ['G12', '50 × 50 mm', '1.8 m', '22,764.56'],
+				['G10', '63 × 63 mm', '1.2 m', '17,181.55'], ['G10', '63 × 63 mm', '1.5 m', '21,603.86'], ['G10', '63 × 63 mm', '1.8 m', '26,025.13'],
+				['G10', '50 × 50 mm', '1.2 m', '20,432.55'], ['G10', '50 × 50 mm', '1.5 m', '25,665.79'], ['G10', '50 × 50 mm', '1.8 m', '30,900.07'],
+			],
 		],
 		'applications' => ['Agricultural fencing', 'Road development', 'Building construction', 'Prawn farming', 'Slope stabilisation'],
 	],
@@ -310,12 +316,12 @@ $PRODUCTS = [
 		'lead'     => 'Bright, energy-saving Day Light LED bulbs that last up to 25,000 hours — backed by a 2-year warranty.',
 		'overview' => [
 			'The LAXAPANA LED range delivers bright Day Light illumination while using far less energy than conventional bulbs. Rated to last up to 25,000 hours, each bulb is backed by a 2-year warranty for peace of mind.',
-			'Available from 3 W to 15.5 W in both B22 pin and E27 screw caps, there is a LAXAPANA LED to fit virtually every light fitting in Sri Lankan homes, shops and offices.',
+			'Available from 3 W to 60 W in both B22 pin and E27 screw caps, in Day Light and (up to 15.5 W) Warm White, there is a LAXAPANA LED to fit virtually every light fitting in Sri Lankan homes, shops and offices.',
 		],
 		'specs' => [
-			'Wattage'   => '3 W – 15.5 W',
+			'Wattage'   => '3 W – 60 W',
 			'Caps'      => 'B22 pin · E27 screw',
-			'Light'     => 'Day Light',
+			'Light'     => 'Day Light · Warm White',
 			'Life'      => 'Up to 25,000 hours',
 		],
 		'highlights' => [
@@ -325,10 +331,11 @@ $PRODUCTS = [
 			'Fits standard B22 and E27 holders',
 		],
 		'stock' => [
-			'title' => 'Range',
-			'head'  => ['Wattage', 'Cap types'],
-			'note' => 'All with a 2-year warranty',
-			'rows'  => [['3 W', 'B22 pin · E27 screw'], ['5 W', 'B22 pin · E27 screw'], ['7 W', 'B22 pin · E27 screw'], ['9 W', 'B22 pin · E27 screw'], ['12 W', 'B22 pin · E27 screw'], ['15.5 W', 'B22 pin · E27 screw']],
+			'title' => 'Price list',
+			'note'  => 'LKR per bulb · B22 pin or E27 screw · 2-year warranty',
+			'head'  => ['Wattage', 'Day Light (6500K)', 'Warm White (3000K)'],
+			'rows'  => [['3 W', 'Rs. 390', 'Rs. 390'], ['5 W', 'Rs. 540', 'Rs. 540'], ['7 W', 'Rs. 640', 'Rs. 640'], ['9 W', 'Rs. 740', 'Rs. 740'], ['12 W', 'Rs. 890', 'Rs. 890'], ['15.5 W', 'Rs. 990', 'Rs. 990'],
+				['18 W', 'Rs. 1,190', '—'], ['20 W', 'Rs. 1,790', '—'], ['30 W', 'Rs. 2,190', '—'], ['40 W', 'Rs. 3,490', '—'], ['50 W', 'Rs. 4,490', '—'], ['60 W', 'Rs. 5,490', '—']],
 		],
 		'applications' => ['Homes', 'Shops', 'Offices', 'Hotels & restaurants', 'Outdoor covered areas'],
 	],
@@ -630,15 +637,33 @@ $TOA_COLOURS = [
 ];
 
 $chainLink = [];
+// PVC chain link price list (LKR per roll, updated 21.09.2026)
+$chainPrices = [
+	'G12 · 63 × 63 mm · 0.9 m × 15 m' => 10075.31, 'G12 · 63 × 63 mm · 1.2 m × 15 m' => 12197.42, 'G12 · 63 × 63 mm · 1.5 m × 15 m' => 15372.13, 'G12 · 63 × 63 mm · 1.8 m × 15 m' => 18547.88,
+	'G12 · 50 × 50 mm · 1.2 m × 15 m' => 15008.54, 'G12 · 50 × 50 mm · 1.5 m × 15 m' => 18887.08, 'G12 · 50 × 50 mm · 1.8 m × 15 m' => 22764.56,
+	'G10 · 63 × 63 mm · 1.2 m × 15 m' => 17181.55, 'G10 · 63 × 63 mm · 1.5 m × 15 m' => 21603.86, 'G10 · 63 × 63 mm · 1.8 m × 15 m' => 26025.13,
+	'G10 · 50 × 50 mm · 1.2 m × 15 m' => 20432.55, 'G10 · 50 × 50 mm · 1.5 m × 15 m' => 25665.79, 'G10 · 50 × 50 mm · 1.8 m × 15 m' => 30900.07,
+];
 foreach ([['G12', '63 × 63 mm', ['0.9', '1.2', '1.5', '1.8']], ['G12', '50 × 50 mm', ['1.2', '1.5', '1.8']], ['G10', '63 × 63 mm', ['1.2', '1.5', '1.8']], ['G10', '50 × 50 mm', ['1.2', '1.5', '1.8']]] as [$g, $mesh, $heights]) {
 	foreach ($heights as $h) $chainLink[] = "$g · $mesh · {$h} m × 15 m";
 }
 
 $leds = [];
 $ledImages = [];
-foreach (['3', '5', '7', '9', '12', '15.5'] as $w) foreach (['B22 pin' => 'pin', 'E27 screw' => 'screw'] as $cap => $file) {
-	$leds[] = "{$w} W · $cap";
-	$ledImages["{$w} W · $cap"] = "products/led/{$w}w-$file.webp";
+$ledPrices = [];
+// Price list (LKR): wattage => [Day Light, Warm White or null]. The 15 W list price applies to the 15.5 W bulb.
+$ledPriceList = ['3' => [390, 390], '5' => [540, 540], '7' => [640, 640], '9' => [740, 740], '12' => [890, 890], '15.5' => [990, 990],
+	'18' => [1190, null], '20' => [1790, null], '30' => [2190, null], '40' => [3490, null], '50' => [4490, null], '60' => [5490, null]];
+foreach ($ledPriceList as $w => [$day, $warm]) {
+	foreach (['B22 pin' => 'pin', 'E27 screw' => 'screw'] as $cap => $file) {
+		foreach (['Day Light' => $day, 'Warm White' => $warm] as $colour => $price) {
+			if ($price === null) continue;
+			$v = "{$w} W · $cap · $colour";
+			$leds[] = $v;
+			$ledPrices[$v] = $price;
+			if (is_file(__DIR__ . "/../assets/v2/img/products/led/{$w}w-$file.webp")) $ledImages[$v] = "products/led/{$w}w-$file.webp";
+		}
+	}
 }
 
 $ORDER_OPTIONS = [
@@ -649,18 +674,18 @@ $ORDER_OPTIONS = [
 	'pvc-coated-gi-wire'     => ['unit' => 'coil', 'label' => 'Size', 'variants' => ['2.60 mm · Dark green · 25 kg coil', 'Other size (specify in note)']],
 	'pvc-coated-barbed-wire' => ['unit' => 'pack', 'label' => 'Pack', 'variants' => ['2.60 mm · Dark green · 20 kg pack', '2.60 mm · 10 kg pack'],
 		'images' => ['2.60 mm · Dark green · 20 kg pack' => 'products/pvc-barbed-20kg.webp', '2.60 mm · 10 kg pack' => 'products/pvc-barbed-10kg.webp']],
-	'pvc-chain-link-fence'   => ['unit' => 'roll', 'label' => 'Gauge · mesh · height', 'variants' => array_merge($chainLink, ['Custom size (specify in note)'])],
+	'pvc-chain-link-fence'   => ['unit' => 'roll', 'label' => 'Gauge · mesh · height', 'variants' => array_merge($chainLink, ['Custom size (specify in note)']), 'prices' => $chainPrices],
 	'gi-chain-link-fence'    => ['unit' => 'roll', 'label' => 'Coating', 'variants' => ['Commercial coating', 'Heavy galvanizing'], 'note_hint' => 'Height, mesh size and quantity details'],
 	'tata-wire-products'     => ['unit' => 'kg', 'label' => 'Product', 'variants' => $PRODUCTS['tata-wire-products']['range'], 'note_hint' => 'Size / specification required'],
 	'laxapana-batteries'     => ['unit' => 'piece', 'label' => 'Size', 'variants' => ['AA · Super Heavy Duty', 'D · Super Heavy Duty', '9V · Extra Heavy Duty']],
-	'laxapana-led-bulbs'     => ['unit' => 'piece', 'label' => 'Wattage · cap', 'variants' => $leds, 'images' => $ledImages],
+	'laxapana-led-bulbs'     => ['unit' => 'piece', 'label' => 'Wattage · cap', 'variants' => $leds, 'images' => $ledImages, 'prices' => $ledPrices],
 	'marquis-water-pumps'    => ['unit' => 'unit', 'label' => 'Model series', 'variants' => ['Centrifugal · MCP', 'Centrifugal · 2MCP', 'Centrifugal · MGA / MHF', 'Jet · MJM', 'Jet · MJSW', 'Peripheral · MKP', 'Automatic booster · MQS', 'Submersible · SA', 'Submersible · 3SA', 'Submersible · MSAm', 'Submersible · SP', 'Submersible · SUP', 'Submersible · V', 'Borehole · 3SWM', 'Borehole · 4SWM', 'Pressure controller · EC-2'], 'note_hint' => 'Required power / head / flow, if known',
 		'images' => ['Centrifugal · MCP' => 'products/pumps/mcp.webp', 'Centrifugal · 2MCP' => 'products/pumps/2mcp.webp', 'Centrifugal · MGA / MHF' => 'products/pumps/mga-mhf.webp', 'Jet · MJM' => 'products/pumps/mjm102.webp', 'Jet · MJSW' => 'products/pumps/mjsw.webp', 'Peripheral · MKP' => 'products/pumps/mkp.webp', 'Automatic booster · MQS' => 'products/pumps/mqs.webp', 'Submersible · SA' => 'products/pumps/sa.webp', 'Submersible · 3SA' => 'products/pumps/3sa.webp', 'Submersible · MSAm' => 'products/pumps/msam.webp', 'Submersible · SP' => 'products/pumps/sp.webp', 'Submersible · SUP' => 'products/pumps/sup.webp', 'Submersible · V' => 'products/pumps/v.webp', 'Borehole · 3SWM' => 'products/pumps/3swm.webp', 'Borehole · 4SWM' => 'products/pumps/4swm.webp', 'Pressure controller · EC-2' => 'products/pumps/ec-2.webp']],
 	'toa-spray'              => ['unit' => 'can', 'label' => 'Colour', 'variants' => array_map(fn($code, $name) => "No. $code · $name", array_keys($TOA_COLOURS), $TOA_COLOURS),
 		'images' => array_combine(array_map(fn($code, $name) => "No. $code · $name", array_keys($TOA_COLOURS), $TOA_COLOURS), array_map(fn($code) => 'products/toa/' . strtolower((string) $code) . '.webp', array_keys($TOA_COLOURS)))],
 	'welding-electrodes'     => ['unit' => 'pack', 'label' => 'Size', 'variants' => ['2.5 mm × 300 mm · 2.5 kg pack', 'Other size (specify in note)']],
 ];
-unset($chainLink, $leds, $ledImages);
+unset($chainLink, $leds, $ledImages, $ledPrices, $ledPriceList, $chainPrices);
 
 $ORDER_STATUSES = [
 	'pending'    => 'Pending',

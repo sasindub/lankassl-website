@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS orders (
 	postal_code    VARCHAR(12)  NOT NULL DEFAULT '',
 	notes          TEXT         NULL,
 	item_count     INT UNSIGNED NOT NULL DEFAULT 0,
+	subtotal       DECIMAL(12,2) NULL COMMENT 'Total of priced items (LKR); NULL when nothing is priced',
 	ip_address     VARCHAR(45)  NOT NULL DEFAULT '',
 	created_at     DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	updated_at     DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -39,6 +40,8 @@ CREATE TABLE IF NOT EXISTS order_items (
 	variant      VARCHAR(160) NOT NULL DEFAULT '',
 	unit         VARCHAR(30)  NOT NULL DEFAULT '',
 	quantity     INT UNSIGNED NOT NULL,
+	unit_price   DECIMAL(12,2) NULL COMMENT 'LKR at time of order; NULL = price on confirmation',
+	line_total   DECIMAL(12,2) NULL,
 	CONSTRAINT fk_items_order FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
 	INDEX idx_order (order_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
